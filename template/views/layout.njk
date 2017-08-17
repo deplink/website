@@ -1,0 +1,27 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.description }}">
+    <meta name="author" content="{{ author }}">
+
+    <meta property="og:url" content="{{ url() }}">
+    <meta property="og:image" content="{{ page.image|default(url('images/facebook.png')) }}">
+    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:description" content="{{ page.description }}">
+
+    <script> document.documentElement.className = document.documentElement.className.replace("no-js","js"); </script>
+    <link rel="stylesheet" href="{{ url('compiled/app.css') }}">
+    <link rel="icon" href="{{ url('favicon.ico') }}">
+</head>
+<body>
+    {% block content %}{% endblock %}
+    {% block scripts %}
+        <script src="{{ url('compiled/app.js') }}"></script>
+    {% endblock %}
+</body>
+</html>
