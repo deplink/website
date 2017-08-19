@@ -1,0 +1,5 @@
+.bg-white { background-color: $white; }
+.bg-gray { background-color: $gray; }
+
+.bg-gray2white { background-image: linear-gradient(to right, $gray 50%, $white 50%); }
+.bg-gray2primary { background-image: linear-gradient(to right, $gray 50%, $primary 50%); }

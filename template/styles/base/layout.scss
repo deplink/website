@@ -5,7 +5,7 @@ html {
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  height: 100%;
 }
 
 body > .navbar {
@@ -16,12 +16,10 @@ body > .navbar {
 }
 
 body > .content {
-  display: flex;
-  flex: 1 0 auto;
+  flex: 1 0 auto; // at least content height
   margin-top: $navbar-height;
 }
 
 body > .footer {
-  display: flex;
-  flex: 0 1 auto;
+  flex: 0 0 auto; // fit height to content
 }

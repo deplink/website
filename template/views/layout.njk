@@ -20,7 +20,7 @@
 </head>
 <body>
     {% include 'fragments/navbar.njk' %}
-    <main class="content">
+    <main class="content {{ background }}">
         {% block content %}{% endblock %}
     </main>
     {% include 'fragments/footer.njk' %}
