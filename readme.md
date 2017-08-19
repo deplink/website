@@ -16,6 +16,37 @@ Install required dependencies (`npm install`) and run either `npm run prod` or `
 
 **Development mode** (`npm run dev`) build output compatible with the browsersync. This mode aromatically starts PHP built-in server as well as browsersync and open appropriate url in your browser. 
 
+Processing Workflow
+-------------------
+
+### Libraries
+
+Almost all files (except this files which name starts with the *"_"* symbol) from the `template/libraries` directory are copied to the `build/libraries`. Directory structure is preserved.
+
+### Images
+
+Images from the `template/images` directory are compressed and copied to the `build/images`. Directory structure is preserved.
+
+### Scripts
+
+The `template/scripts/app.js` script is processed using browserify and minified. Output is saved to the `build/compiled/app.js` file.
+
+### Styles
+
+The `template/scripts/app.scss` style is processed using sass and minified. Output is stored in the `build/compiled/app.css` file.
+
+### Content
+
+Markdown files placed in the `content` directory have following processing workflow (files are processed in random order):
+
+1. **Extract front matter from markdown**, extracted data will be available in layout under the `page` variable, e.g. `{{ page.title }}`),
+1. **Transform markdown to HTML**, use `{% block markdown %}{% endblock %}` to insert HTML in layout),
+1. **Attach `app.json` data**, file object will be bind in layout to the `app` variable (example usage: `{{ app.host }}`),
+1. **Mount extensions** defined in the `extensions` directory (see `extensions/readme.md` file for more details),
+1. **Render view** specified in the front matter (the `layout` variable),
+1. **Minify HTML output**, more details can be found in [project quick reference](https://github.com/kangax/html-minifier),
+1. **Save output to the `build` directory** under the same path as the source markdown file and using the same file name (with .html extension).
+
 License
 -------
 

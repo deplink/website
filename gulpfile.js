@@ -35,6 +35,11 @@ gulp.task('images', function () {
         .pipe(gulp.dest('build/images'));
 });
 
+gulp.task('libraries', function () {
+    return gulp.src('template/libraries/**/[^_]*')
+        .pipe(gulp.dest('build/libraries'));
+});
+
 gulp.task('public', function () {
     return gulp.src(['template/*', 'template/.*'], { nodir: true })
         .pipe(gulp.dest('build'));
@@ -53,7 +58,7 @@ gulp.task('content', function () {
         });
     };
 
-    var config = require(__dirname + '/config.json');
+    var config = require(__dirname + '/app.json');
     if (gulp.seq.indexOf('watch') >= 0) {
         // If running the "watch" task then change host to the "/"
         // (without this generated urls are incompatible with browsersync).
@@ -64,7 +69,7 @@ gulp.task('content', function () {
         .pipe(nunjucksMd({
             path: 'template/views',
             manageEnv: manageEnvironment,
-            data: config,
+            data: {app: config},
             block: 'markdown'
         }))
         .pipe(htmlmin({ collapseWhitespace: true }))
@@ -74,7 +79,7 @@ gulp.task('content', function () {
 gulp.task('watch', function () {
     // First clean project and then build all resources parallel, at the end start
     // watching for changes and run browsersync (proxy via the built-in PHP server).
-    runSequence('clean', ['styles', 'scripts', 'images', 'public', 'content'], function() {
+    runSequence('clean', ['styles', 'scripts', 'images', 'libraries', 'public', 'content'], function() {
         gulp.watch(['content/**/*.md', 'template/views/**/*.njk'], ['content']);
         gulp.watch('template/styles/**/*.scss', ['styles']);
         gulp.watch('template/scripts/**/*.js', ['scripts']);
@@ -102,5 +107,5 @@ gulp.task('watch', function () {
 
 gulp.task('default', function () {
     // First clean project and then build all resources parallel.
-    runSequence('clean', ['styles', 'scripts', 'images', 'public', 'content']);
+    runSequence('clean', ['styles', 'scripts', 'images', 'libraries', 'public', 'content']);
 });
