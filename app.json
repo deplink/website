@@ -1,4 +1,16 @@
 {
     "host": "https://deplink.com/",
-    "author": "Wojciech Mleczek"
+    "author": "Wojciech Mleczek",
+
+    "github": {
+        "url": "https://github.com/deplink"
+    },
+
+    "blog": {
+        "url": "https://medium.com/deplink"
+    },
+
+    "repo": {
+        "url": "https://repo.deplink.com"
+    }
 }

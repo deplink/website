@@ -19,13 +19,14 @@
     <link rel="icon" href="{{ url('favicon.ico') }}">
 </head>
 <body>
-    {% include 'fragments/navbar.njk' %}
-    <main class="content {{ background }}">
+    {% include '_fragments/navbar.njk' %}
+    <main class="flex content {{ background }}">
         {% block content %}{% endblock %}
     </main>
-    {% include 'fragments/footer.njk' %}
+    {% include '_fragments/footer.njk' %}
 
     {% block scripts %}
+        {% include '_fragments/indexes.njk' %}
         <script src="{{ url('compiled/app.js') }}"></script>
     {% endblock %}
 </body>

@@ -1,6 +1,7 @@
 var del = require('del');
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var gutil = require('gulp-util');
 var uglify = require('gulp-uglify');
 var htmlmin = require('gulp-htmlmin');
 var connect = require('gulp-connect-php');
@@ -8,8 +9,10 @@ var imagemin = require('gulp-imagemin');
 var cleanCSS = require('gulp-clean-css');
 var browserify = require('gulp-browserify');
 var nunjucksMd = require('gulp-nunjucks-md');
+var frontmatter = require('frontmatter');
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
+var markdownToJSON = require('gulp-markdown-to-json');
 
 gulp.task('clean', function () {
     return del(['build']);
@@ -45,6 +48,33 @@ gulp.task('public', function () {
         .pipe(gulp.dest('build'));
 });
 
+gulp.task('indexes', function () {
+    var transform = function (data, file) {
+        // Remove keys which can contain markdown content
+        // (search only through the metadata to improve performance)
+        delete data.data;
+        delete data.content;
+        delete data.body;
+
+        // Flatten json structure by modifying file path.
+        var baseDir = __dirname +'/content/';
+        var relativePath = file.path.substr(baseDir.length);
+        file.path = baseDir + relativePath.replace(/[\\/]/g, '~');
+
+        // Append url associated with the markdown to the output data
+        // (unify directory separator and remove .md extension).
+        data.url = relativePath.replace(/[\\/]/g, '/').slice(0, -3);
+        data.url = data.url === 'index' ? '/' : data.url;
+
+        return data;
+    };
+
+    return gulp.src('content/**/*.md')
+        .pipe(gutil.buffer())
+        .pipe(markdownToJSON(frontmatter, 'indexes.json', transform))
+        .pipe(gulp.dest('build/compiled'))
+});
+
 gulp.task('content', function () {
     var manageEnvironment = function (env) {
         // Load all files from extensions directory
@@ -69,22 +99,34 @@ gulp.task('content', function () {
         .pipe(nunjucksMd({
             path: 'template/views',
             manageEnv: manageEnvironment,
-            data: {app: config},
+            data: { app: config },
             block: 'markdown'
         }))
-        .pipe(htmlmin({ collapseWhitespace: true }))
+        .pipe(htmlmin({
+            collapseWhitespace: true,
+            minifyJS: true
+        }))
         .pipe(gulp.dest('build'));
 });
 
 gulp.task('watch', function () {
     // First clean project and then build all resources parallel, at the end start
     // watching for changes and run browsersync (proxy via the built-in PHP server).
-    runSequence('clean', ['styles', 'scripts', 'images', 'libraries', 'public', 'content'], function() {
-        gulp.watch(['content/**/*.md', 'template/views/**/*.njk'], ['content']);
-        gulp.watch('template/styles/**/*.scss', ['styles']);
-        gulp.watch('template/scripts/**/*.js', ['scripts']);
-        gulp.watch('template/images/**/*.{png,jpg,gif}', ['images']);
-        gulp.watch(['template/*', 'template/.*'], ['public']);
+    runSequence('clean', ['styles', 'scripts', 'images', 'libraries', 'public', 'indexes'], 'content', function () {
+        var reloadAfterTasks = function(tasks) {
+            return function() {
+                runSequence(tasks, function () { browserSync.reload() });
+            };
+        };
+
+        // Triggered watch will perform specified task(s) and reload the page
+        // when the specified task ends successfully (achieved via reloadAfterTasks).
+        gulp.watch(['content/**/*.md'], reloadAfterTasks('indexes'));
+        gulp.watch(['content/**/*.md', 'template/views/**/*.njk'], reloadAfterTasks('content'));
+        gulp.watch(['template/styles/**/*.scss'], reloadAfterTasks('styles'));
+        gulp.watch(['template/scripts/**/*.js'], reloadAfterTasks('scripts'));
+        gulp.watch(['template/images/**/*.{png,jpg,gif}'], reloadAfterTasks('images'));
+        gulp.watch(['template/*', 'template/.*'], reloadAfterTasks('public'));
 
         // Run built-in PHP server on 127.0.0.1:8000,
         // after this operation init the browsersync instance.
@@ -96,16 +138,10 @@ gulp.task('watch', function () {
                 proxy: '127.0.0.1:8000'
             });
         });
-
-        // Perform browser reload whenever any of the files
-        // in "template" or "content" directory will change.
-        gulp.watch(['template/**/*', 'content/**/*']).on('change', function () {
-            browserSync.reload();
-        });
     });
 });
 
 gulp.task('default', function () {
     // First clean project and then build all resources parallel.
-    runSequence('clean', ['styles', 'scripts', 'images', 'libraries', 'public', 'content']);
+    runSequence('clean', ['styles', 'scripts', 'images', 'libraries', 'public', 'indexes'], 'content');
 });

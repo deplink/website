@@ -19,23 +19,9 @@ Install required dependencies (`npm install`) and run either `npm run prod` or `
 Processing Workflow
 -------------------
 
-### Libraries
+### Website Content
 
-Almost all files (except this files which name starts with the *"_"* symbol) from the `template/libraries` directory are copied to the `build/libraries`. Directory structure is preserved.
-
-### Images
-
-Images from the `template/images` directory are compressed and copied to the `build/images`. Directory structure is preserved.
-
-### Scripts
-
-The `template/scripts/app.js` script is processed using browserify and minified. Output is saved to the `build/compiled/app.js` file.
-
-### Styles
-
-The `template/scripts/app.scss` style is processed using sass and minified. Output is stored in the `build/compiled/app.css` file.
-
-### Content
+Each markdown file is associated with unique url which is resolved from file path (e.g. `content/community/partners.md` will be available under the `https://deplink.com/community/partners` url).
 
 Markdown files placed in the `content` directory have following processing workflow (files are processed in random order):
 
@@ -46,6 +32,15 @@ Markdown files placed in the `content` directory have following processing workf
 1. **Render view** specified in the front matter (the `layout` variable),
 1. **Minify HTML output**, more details can be found in [project quick reference](https://github.com/kangax/html-minifier),
 1. **Save output to the `build` directory** under the same path as the source markdown file and using the same file name (with .html extension).
+
+### Resources
+
+All sections listed below are processed in parallel:
+
+- **Libraries** - almost all files (except this files which name starts with the *"_"* symbol) from the `template/libraries` directory are copied to the `build/libraries`. Directory structure is preserved.
+- **Images** - images from the `template/images` directory are compressed and copied to the `build/images`. Directory structure is preserved.
+- **Scripts** - the `template/scripts/app.js` script is processed using browserify and minified. Output is saved to the `build/compiled/app.js` file.
+- **Styles** - the `template/scripts/app.scss` style is processed using sass and minified. Output is stored in the `build/compiled/app.css` file.
 
 License
 -------
