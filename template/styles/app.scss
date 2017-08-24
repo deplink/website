@@ -1,6 +1,14 @@
 @import 'base/reset';
 @import 'base/config';
 @import 'base/layout';
+@import 'base/typography';
+
+@import 'base/mixins/responsive/eq';
+@import 'base/mixins/responsive/gt';
+@import 'base/mixins/responsive/gte';
+@import 'base/mixins/responsive/lt';
+@import 'base/mixins/responsive/lte';
+@import 'base/mixins/responsive/media';
 
 @import 'base/helpers/color';
 @import 'base/helpers/size';
@@ -10,7 +18,10 @@
 @import 'collections/menu';
 
 @import 'elements/button';
+@import 'elements/container';
 @import 'elements/key';
+@import 'elements/section';
 
+@import 'fragments/banner';
 @import 'fragments/footer';
 @import 'fragments/navbar';

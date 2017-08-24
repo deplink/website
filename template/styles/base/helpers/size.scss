@@ -1,1 +1,57 @@
+@each $prefix in (xs sm md lg) {
+    @include gte($prefix) {
+        @for $i from 1 through $flex-columns {
+            .#{$prefix}-#{$i} {
+                width: ($i / $flex-columns) * 100%;
+                flex-basis: ($i / $flex-columns) * 100%;
+            }
+
+            .#{$prefix}-push-#{$i} {
+                margin-left: ($i / $flex-columns) * 100%;
+            }
+        }
+    }
+}
 .xs-12 { /* TODO */ }
+
+// Gap - Margin
+.mtx { margin-top: $xs-gap !important; }
+.mrx { margin-right: $xs-gap !important; }
+.mbx { margin-bottom: $xs-gap !important; }
+.mlx { margin-left: $xs-gap !important; }
+
+.mts { margin-top: $sm-gap !important; }
+.mrs { margin-right: $sm-gap !important; }
+.mbs { margin-bottom: $sm-gap !important; }
+.mls { margin-left: $sm-gap !important; }
+
+.mtm { margin-top: $md-gap !important; }
+.mrm { margin-right: $md-gap !important; }
+.mbm { margin-bottom: $md-gap !important; }
+.mlm { margin-left: $md-gap !important; }
+
+.mtl { margin-top: $lg-gap !important; }
+.mrl { margin-right: $lg-gap !important; }
+.mbl { margin-bottom: $lg-gap !important; }
+.mll { margin-left: $lg-gap !important; }
+
+// Gap - Padding
+.ptx { padding-top: $xs-gap !important; }
+.prx { padding-right: $xs-gap !important; }
+.pbx { padding-bottom: $xs-gap !important; }
+.plx { padding-left: $xs-gap !important; }
+
+.pts { padding-top: $sm-gap !important; }
+.prs { padding-right: $sm-gap !important; }
+.pbs { padding-bottom: $sm-gap !important; }
+.pls { padding-left: $sm-gap !important; }
+
+.ptm { padding-top: $md-gap !important; }
+.prm { padding-right: $md-gap !important; }
+.pbm { padding-bottom: $md-gap !important; }
+.plm { padding-left: $md-gap !important; }
+
+.ptl { padding-top: $lg-gap !important; }
+.prl { padding-right: $lg-gap !important; }
+.pbl { padding-bottom: $lg-gap !important; }
+.pll { padding-left: $lg-gap !important; }

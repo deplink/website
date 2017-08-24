@@ -1,0 +1,17 @@
+/**
+ * Example:
+ *
+ * body {
+ *     @include lte(md) {
+ *         // apply at sm and md
+ *         background: red;
+ *     }
+ * }
+ */
+
+@mixin lte($media) {
+	@if index($media, 'xs') { @include media(null, $sm - 1px) { @content; }}
+	@else if index($media, 'sm') { @include media(null, $md - 1px) { @content; }}
+	@else if index($media, 'md') { @include media(null, $lg - 1px) { @content; }}
+	@else { @content; }
+}

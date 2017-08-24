@@ -33,7 +33,7 @@ gulp.task('scripts', function () {
 });
 
 gulp.task('images', function () {
-    return gulp.src('template/images/**/*.{png,jpg,gif}')
+    return gulp.src('template/images/**/*.{png,jpg,gif,svg}')
         .pipe(imagemin())
         .pipe(gulp.dest('build/images'));
 });
@@ -125,7 +125,7 @@ gulp.task('watch', function () {
         gulp.watch(['content/**/*.md', 'template/views/**/*.njk'], reloadAfterTasks('content'));
         gulp.watch(['template/styles/**/*.scss'], reloadAfterTasks('styles'));
         gulp.watch(['template/scripts/**/*.js'], reloadAfterTasks('scripts'));
-        gulp.watch(['template/images/**/*.{png,jpg,gif}'], reloadAfterTasks('images'));
+        gulp.watch(['template/images/**/*.{png,jpg,gif,svg}'], reloadAfterTasks('images'));
         gulp.watch(['template/*', 'template/.*'], reloadAfterTasks('public'));
 
         // Run built-in PHP server on 127.0.0.1:8000,

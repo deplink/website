@@ -18,7 +18,13 @@ module.exports = function (env) {
      * @return {string}
      */
     var fn = function (url) {
-        return data.host + (url || '');
+        url = url || '';
+
+        if(url.startsWith('http://') || url.startsWith('https://')) {
+            return url;
+        }
+
+        return data.host + url;
     };
 
     env.addGlobal('url', fn);

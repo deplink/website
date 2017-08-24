@@ -1,11 +1,39 @@
-.navabr {
-  // ...
+.navbar {
+    background: $white;
+    z-index: 50;
 }
 
 .navbar-logo {
-  // ...
+    transition: all 0.4s;
+    line-height: $navbar-height;
+    filter: grayscale(75%);
+    opacity: 0.5;
+
+    &:hover, &:focus {
+        filter: grayscale(0%);
+        opacity: 1.0;
+        outline: none;
+    }
+
+    img {
+        height: 24px;
+        vertical-align: middle;
+    }
 }
 
 .navbar-link {
-  // ...
+    display: inline-block;
+    text-transform: uppercase;
+    transition: border-color 0.4s;
+    border-top: $navbar-hover-size solid transparent;
+    line-height: ($navbar-height - $navbar-hover-size);
+    font-family: $font-family-brand;
+    font-weight: $font-weight-bold;
+    font-size: 0.9375em;
+    color: $font-color;
+
+    &:hover, &:focus {
+        border-color: $second;
+        outline: none;
+    }
 }

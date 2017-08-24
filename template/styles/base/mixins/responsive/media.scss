@@ -1,0 +1,19 @@
+/**
+ * Example:
+
+ * body {
+ *     @include media(300px, 500px, 'screen') {
+ *         // apply at 300-500px for screen display
+ *         background: red;
+ *     }
+ * }
+ */
+
+@mixin media($min: null, $max: null, $type: 'all') {
+	$query: $type;
+
+	@if $min { $query: "#{$query} and (min-width: #{$min})"; }
+	@if $max { $query: "#{$query} and (max-width: #{$max})"; }
+
+	@media #{$query} { @content; }
+}

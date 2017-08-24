@@ -1,0 +1,36 @@
+body {
+    font-size: 16px;
+    font-family: $font-family-normal;
+    font-weight: $font-weight-normal;
+    line-height: $font-line-height;
+    color: $font-color;
+}
+
+.font-small, small {
+    font-size: $font-size-small;
+}
+
+.font-bold, b, strong {
+    font-weight: $font-weight-bold;
+}
+
+h1, .font-title {
+    font-family: $font-family-brand;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-title;
+}
+
+h2, .font-header {
+    font-family: $font-family-brand;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-header;
+}
+
+.font-code, code {
+    font-family: $font-family-code;
+    line-height: 1.6em;
+}
+
+.text-center {
+    text-align: center;
+}

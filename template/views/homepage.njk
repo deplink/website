@@ -2,17 +2,50 @@
 {% set background = 'bg-gray' %}
 
 {% block content %}
-    <div>
-        <div class="bg-gray2primary">
-            ...
+    <div class="banner">
+        <div class="banner-logo">
+            <img alt="Deplink Logo" src="{{ url('images/logo.svg') }}">
         </div>
-
-        <section class="bg-white">
-            ...
-        </section>
-
-        <section class="bg-gray">
-            ...
-        </section>
+        <div class="banner-code">
+            <code>
+                <p><span class="banner-code-host">you@localhost:~$</span> deplink init your/package</p>
+                <p>Creating deplink.json file... <span class="banner-code-info">OK</span></p>
+                <p><span class="banner-code-host">you@localhost:~$</span> deplink install deplink/example</p>
+                <p>Retrieving installed dependencies... <span class="banner-code-notice">Skipped</span></p>
+                <p>Resolving dependencies tree... <span class="banner-code-info">OK</span></p>
+                <p>Dependencies: <span class="banner-code-notice">1 installs</span>, <span class="banner-code-notice">0 updates</span>, <span class="banner-code-notice">0 removals</span></p>
+                <p>- Installing <span class="banner-code-info">deplink/example</span> (<span class="banner-code-notice">v1.0.2</span>) 100%</p>
+                <p>Writing lock file... <span class="banner-code-info">OK</span></p>
+                <p>Generating autoload header... <span class="banner-code-info">OK</span></p>
+                <p><span class="banner-code-host">you@localhost:~$</span></p>
+            </code>
+        </div>
     </div>
+
+    <section class="bg-white section">
+        <div class="container text-center">
+            <h1> Official Deplink Repository </h1>
+
+            <p> Official Deplink Repository is the place where you can <strong>search libraries and download them</strong>. All of these libraries are <strong>free to use and public available for everyone</strong>. You can create account without charges and <strong>share your open source packages</strong> with the whole Deplink Community. </p>
+
+            <a href="{{ app.repo.url }}"> Go to Repository </a>
+            <a href="{{ url('documentation/guide/advanced/private-repository') }}"> Read how to create a private company repository </a>
+        </div>
+    </section>
+
+    <section class="bg-gray section">
+        <div class="container">
+            <h1 class="text-center"> Quick Access </h1>
+
+            <div class="flex">
+                <div class="xs-12 md-6">
+                    <p> Do you love keyboard shortcuts? And <b>quick access to any view or action</b> from one place? <b>We love too!</b></p>
+                    <p> Try it out, <b>press <span class="key">F2</span> and type</b> something. You can type "help" to learn more about available commands. </p>
+                </div>
+                <div class="xs-12 md-6 text-center">
+                    <img alt="Example of using the Deplink Quick Access" src="{{ url('images/quick-access.png') }}">
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
