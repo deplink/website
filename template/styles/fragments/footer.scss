@@ -1,7 +1,30 @@
 .footer {
     background: $primary;
+    color: $white;
+
+    a {
+        color: $white;
+    }
+
+    .menu {
+        font-size: $font-size-small;
+    }
 }
 
 .footer-logo {
     // ...
+
+    img {
+        width: 90px;
+        margin-top: -16px;
+    }
+}
+
+.footer-credits {
+    font-size: $font-size-tiny;
+    opacity: 0.6;
+
+    a {
+        font-weight: $font-weight-highlight;
+    }
 }

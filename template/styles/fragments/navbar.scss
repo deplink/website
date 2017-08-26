@@ -24,16 +24,15 @@
 .navbar-link {
     display: inline-block;
     text-transform: uppercase;
-    transition: border-color 0.4s;
-    border-top: $navbar-hover-size solid transparent;
-    line-height: ($navbar-height - $navbar-hover-size);
+    line-height: $navbar-height;
     font-family: $font-family-brand;
-    font-weight: $font-weight-bold;
+    font-weight: $font-weight-header;
+    transition: color 0.3s;
     font-size: 0.9375em;
     color: $font-color;
 
     &:hover, &:focus {
-        border-color: $second;
+        color: darken($second, 25%);
         outline: none;
     }
 }

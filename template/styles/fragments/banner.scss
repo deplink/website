@@ -12,7 +12,7 @@
 
     img {
         flex: 0 0 auto;
-        max-height: $banner-image-height;
+        width: $banner-image-width;
 
         @include gte(lg) {
             max-width: none;
@@ -39,7 +39,7 @@
 
 .banner-code-host {
     color: #95e35c;
-    font-weight: $font-weight-bold;
+    font-weight: $font-weight-highlight;
 }
 
 .banner-code-notice {

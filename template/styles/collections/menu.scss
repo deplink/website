@@ -3,9 +3,20 @@
 }
 
 .menu-header {
-    // ...
+    font-family: $font-family-brand;
+    font-weight: $font-weight-header;
+    text-transform: uppercase;
+    padding: 5px 0;
 }
 
 .menu-item {
-    // ...
+    a {
+        display: block;
+        padding: 5px 0;
+        transition: padding 0.4s;
+
+        &:hover {
+            padding-left: 10px;
+        }
+    }
 }

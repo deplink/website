@@ -14,7 +14,13 @@ main, aside, nav, section, article {
 }
 
 a {
+    color: $second;
     text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+        color: darken($second, 25%);
+    }
 }
 
 code {

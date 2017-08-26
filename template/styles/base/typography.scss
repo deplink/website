@@ -11,18 +11,18 @@ body {
 }
 
 .font-bold, b, strong {
-    font-weight: $font-weight-bold;
+    font-weight: $font-weight-highlight;
 }
 
 h1, .font-title {
     font-family: $font-family-brand;
-    font-weight: $font-weight-bold;
+    font-weight: $font-weight-header;
     font-size: $font-size-title;
 }
 
 h2, .font-header {
     font-family: $font-family-brand;
-    font-weight: $font-weight-bold;
+    font-weight: $font-weight-header;
     font-size: $font-size-header;
 }
 
