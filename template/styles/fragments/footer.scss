@@ -12,7 +12,12 @@
 }
 
 .footer-logo {
-    // ...
+    display: block;
+    transition: transform 0.4s;
+
+    &:hover {
+        transform: translateY(-$sm-gap);
+    }
 
     img {
         width: 90px;

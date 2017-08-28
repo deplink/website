@@ -1,5 +1,11 @@
 .menu {
     list-style-type: none;
+
+    &.-dark {
+        &, a {
+            color: $white;
+        }
+    }
 }
 
 .menu-header {
@@ -14,9 +20,11 @@
         display: block;
         padding: 5px 0;
         transition: padding 0.4s;
+        padding-right: (2 * $xs-gap);
 
         &:hover {
-            padding-left: 10px;
+            padding-left: (2 * $xs-gap);
+            padding-right: 0;
         }
     }
 }

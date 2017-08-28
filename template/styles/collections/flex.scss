@@ -1,11 +1,22 @@
 * {
-  flex: 1 1 auto;
+    flex: 1 1 auto;
 }
 
 .flex {
-  display: flex;
+    display: flex;
+    margin-left: -15px;
+    margin-right: -15px;
+
+    &.-wrap {
+        flex-wrap: wrap;
+    }
+
+    & > * {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 }
 
 .flex-fit {
-  flex: 0 0 auto;
+    flex: 0 0 auto;
 }

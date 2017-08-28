@@ -10,14 +10,13 @@
     flex-basis: calc(50% - #{$banner-offset});
     padding: (1.5 * $lg-gap) $lg-gap;
 
+    @include media(null, 1200px) {
+        padding: (1.5 * $lg-gap) $xs-gap;
+    }
+
     img {
         flex: 0 0 auto;
         width: $banner-image-width;
-
-        @include gte(lg) {
-            max-width: none;
-            position: absolute;
-        }
     }
 }
 

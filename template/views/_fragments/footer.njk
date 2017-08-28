@@ -1,13 +1,13 @@
 <footer class="footer">
     <div class="container">
-        <div class="flex">
-            <div class="lg-3 text-center">
+        <div class="flex -wrap">
+            <div class="xs-12 lg-3 text-center">
                 <a class="footer-logo" href="{{ url('/') }}">
                     <img alt="Deplink Iconmark" src="{{ url('images/iconmark.svg') }}">
                 </a>
             </div>
-            <div class="lg-3">
-                <ul class="menu mtl">
+            <div class="xs-12 md-4 lg-3">
+                <ul class="menu -dark mtl">
                     <li class="menu-header"> Community</li>
                     <li class="menu-item"><a href="{{ app.github.url }}"> GitHub </a></li>
                     <li class="menu-item"><a href="{{ app.blog.url }}"> Blog </a></li>
@@ -15,16 +15,16 @@
                     <li class="menu-item"><a href="{{ url('community/partners') }}"> Partners </a></li>
                 </ul>
             </div>
-            <div class="lg-3">
-                <ul class="menu mtl">
+            <div class="xs-12 md-4 lg-3">
+                <ul class="menu -dark mtl">
                     <li class="menu-header"> Documentation</li>
                     <li class="menu-item"><a href="{{ url(pages({layout: 'documentation/guide'}, 'order')[0].url) }}"> Guide </a></li>
                     <li class="menu-item"><a href="{{ url(pages({layout: 'documentation/reference'}, 'order')[0].url) }}"> Reference </a></li>
                     <li class="menu-item"><a href="{{ url('documentation/quick-access') }}"> Quick Access </a></li>
                 </ul>
             </div>
-            <div class="lg-3">
-                <ul class="menu mtl">
+            <div class="xs-12 md-4 lg-3">
+                <ul class="menu -dark mtl">
                     <li class="menu-header"> Resources</li>
                     <li class="menu-item"><a href="{{ url('download') }}"> Download </a></li>
                     <li class="menu-item"><a href="{{ app.repo.url }}"> Repository </a></li>
@@ -33,7 +33,7 @@
         </div>
 
         <div class="flex">
-            <div class="xs-push-3 mtm mbm">
+            <div class="lg-push-3 mtm mbm">
                 <div class="footer-credits">
                     Code licensed under the <a href="https://opensource.org/licenses/MIT">MIT License</a>
                     and the docs are licensed under the <a href="https://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>.

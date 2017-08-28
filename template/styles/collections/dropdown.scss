@@ -1,5 +1,6 @@
 .dropdown {
     display: inline-block;
+    position: relative;
 }
 
 .dropdown-link {
@@ -8,4 +9,15 @@
 
 .dropdown-menu {
     display: none;
+    position: absolute;
+    background: white;
+    margin-left: -$md-gap;
+    padding: $sm-gap $md-gap;
+    box-shadow: 0 2px 4px rgba(black, 0.6);
+    margin-top: $xs-gap;
+    min-width: 180px;
+
+    a {
+        color: $primary;
+    }
 }
