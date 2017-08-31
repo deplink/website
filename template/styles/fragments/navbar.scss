@@ -44,17 +44,47 @@
     }
 }
 
-.navbar-desktop {
-    @include media(null, $navbar-breakpoint - 1px) {
-        display: none;
+.navbar-mobile-toggle {
+    display: none;
+    position: fixed;
+    top: 0; right: 0;
+    border-radius: 100%;
+    transition: background 0.3s;
+    width: (0.8 * $navbar-height);
+    height: (0.8 * $navbar-height);
+    line-height: (0.8 * $navbar-height);
+    margin: (0.1 * $navbar-height);
+    text-align: center;
+    cursor: pointer;
+
+    &:hover, &:focus {
+        background: $gray;
     }
 }
 
 .navbar-mobile {
     display: none;
+    margin-left: -100%;
     position: fixed;
     top: $navbar-height;
     bottom: 0;
     background: $primary;
+    transition: margin-left 0.5s;
     width: 100%;
+
+    &.navbar-mobile.-visible {
+        margin-left: 0;
+    }
+}
+
+
+@include media(null, $navbar-breakpoint - 1px) {
+    .navbar-desktop {
+        display: none;
+    }
+
+    .navbar-mobile,
+    .navbar-mobile-toggle {
+        display: block;
+    }
 }

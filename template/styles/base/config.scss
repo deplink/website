@@ -29,8 +29,8 @@ $font-size-tiny:   0.875em;
 $font-size-title:  $font-size-huge;
 $font-size-header: $font-size-large;
 
-$font-family-brand: Raleway, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-$font-family-normal: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font-family-brand: Raleway, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+$font-family-normal: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 $font-family-code: Consolas, "Lucida Console", "Courier New", Courier, Monaco, monospace;
 
 $font-weight-normal: 400;
@@ -45,7 +45,7 @@ $flex-columns: 12;
 
 // Navbar
 $navbar-height: 60px;
-$navbar-breakpoint: 600px;
+$navbar-breakpoint: 660px;
 
 // Banner
 $banner-offset: ($container-size / 4);

@@ -10,6 +10,7 @@ module.exports = function () {
     function show(tag) {
         tag = $(tag.target || tag).closest('.dropdown');
 
+        hideAllWithout(tag);
         tag.find('.dropdown-menu').stop().slideDown(animTime);
     }
 
@@ -32,6 +33,7 @@ module.exports = function () {
     function toggle(tag) {
         tag = $(tag.target || tag).closest('.dropdown');
 
+        hideAllWithout(tag);
         tag.find('.dropdown-menu').stop().slideToggle(animTime);
     }
 
@@ -51,10 +53,28 @@ module.exports = function () {
         tag = $(tag.target || tag).parents('.dropdown');
 
         var excluded = tag.find('.dropdown-menu');
-        $('.dropdown-menu').not(excluded).slideUp(animTime);
+        $('.dropdown-menu').not(excluded).stop().slideUp(animTime);
+    }
+
+    function handleKeyDown(e) {
+        var escKey = 27;
+        var enterKey = 13;
+        var spaceKey = 32;
+
+        var key = e.keyCode || e.which;
+        if ([enterKey, spaceKey].indexOf(key) >= 0) {
+            // Enter or space pressed
+            toggle('.dropdown-link:focus');
+        }
+
+        if(key === escKey) {
+            // Esc pressed
+            hideAll();
+        }
     }
 
     $('.dropdown-link').click(toggle);
     $(document).click(hideAllWithout);
+    $(document).keydown(handleKeyDown);
 
 }();

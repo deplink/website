@@ -15,8 +15,9 @@
     display: block;
     transition: transform 0.4s;
 
-    &:hover {
+    &:hover, &:focus {
         transform: translateY(-$sm-gap);
+        outline: none;
     }
 
     img {

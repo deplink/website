@@ -15,16 +15,16 @@
     padding: 5px 0;
 }
 
-.menu-item {
-    a {
-        display: block;
-        padding: 5px 0;
-        transition: padding 0.4s;
-        padding-right: (2 * $xs-gap);
+.menu-item a {
+    display: block;
+    padding: 5px 0;
+    transition: padding 0.4s;
+    padding-right: (2 * $xs-gap);
 
-        &:hover {
-            padding-left: (2 * $xs-gap);
-            padding-right: 0;
-        }
+    &:hover, &:focus {
+        padding-left: (2 * $xs-gap);
+        padding-right: 0;
+        outline: none;
     }
+
 }

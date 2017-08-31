@@ -6,8 +6,20 @@ body {
     color: $font-color;
 }
 
+.font-huge {
+    font-size: $font-size-huge;
+}
+
+.font-large {
+    font-size: $font-size-large;
+}
+
 .font-small, small {
     font-size: $font-size-small;
+}
+
+.font-tiny {
+    font-size: $font-size-tiny;
 }
 
 .font-bold, b, strong {

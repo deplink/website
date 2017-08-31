@@ -8,8 +8,9 @@
     text-transform: uppercase;
     font-weight: $font-weight-highlight;
 
-    &:hover {
+    &:hover, &:focus {
         color: $white;
         background: darken($second, 10%);
+        outline: none;
     }
 }

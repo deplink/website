@@ -3,6 +3,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var gutil = require('gulp-util');
 var uglify = require('gulp-uglify');
+var filter = require('gulp-filter');
 var htmlmin = require('gulp-htmlmin');
 var connect = require('gulp-connect-php');
 var imagemin = require('gulp-imagemin');
@@ -39,7 +40,13 @@ gulp.task('images', function () {
 });
 
 gulp.task('libraries', function () {
-    return gulp.src('template/libraries/**/[^_]*')
+	var relFiles = require('./template/libraries/.export.js');
+	var absFiles = relFiles.map(function(f) {
+	    return 'template/libraries/' + f;
+    });
+
+    return gulp.src('template/libraries/**/*')
+        .pipe(filter(absFiles))
         .pipe(gulp.dest('build/libraries'));
 });
 
