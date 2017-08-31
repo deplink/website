@@ -22,7 +22,7 @@
 </head>
 <body>
     {% include '_fragments/navbar.njk' %}
-    <main class="content {{ background }}">
+    <main class="flex -no-gutter content {{ background }}">
         {% block content %}{% endblock %}
     </main>
     {% include '_fragments/footer.njk' %}

@@ -7,13 +7,23 @@
     margin-left: -15px;
     margin-right: -15px;
 
-    &.-wrap {
-        flex-wrap: wrap;
-    }
-
     & > * {
         padding-left: 15px;
         padding-right: 15px;
+    }
+}
+
+.flex.-wrap {
+    flex-wrap: wrap;
+}
+
+.flex.-no-gutter {
+    margin-left: 0;
+    margin-right: 0;
+
+    & > * {
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
