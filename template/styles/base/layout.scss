@@ -18,6 +18,10 @@ body > .navbar {
 body > .content {
   flex: 1 0 auto; // at least content height
   margin-top: $navbar-height;
+
+  *.is-current {
+    font-weight: $font-weight-highlight;
+  }
 }
 
 body > .footer {

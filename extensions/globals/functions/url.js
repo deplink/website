@@ -8,7 +8,7 @@ module.exports = function (env) {
      *
      * Usage                     | Return value                      | Notes
      * --------------------------|-----------------------------------|--------------------------
-     * url()                     | https://example.com/current/url   | Current url
+     * url()                     | https://example.com               | Homepage
      * url('/')                  | https://example.com               | Homepage
      * url('relative/path')      | https://example.com/relative/path | Resolve absolute path
      * url('/relative/path')     | https://example.com/relative/path | Resolve absolute path
@@ -29,5 +29,6 @@ module.exports = function (env) {
     };
 
     env.addGlobal('url', fn);
+    return fn;
 
 };
