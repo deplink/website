@@ -1,0 +1,7 @@
+@each $prefix in (xs sm md lg) {
+    @include eq($prefix) {
+        .#{$prefix}-hide {
+            display: none !important;
+        }
+    }
+}

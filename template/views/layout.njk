@@ -1,3 +1,5 @@
+{% import '_fragments/navbar.njk' as navbar %}
+
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -21,7 +23,10 @@
     <link rel="icon" href="{{ url('favicon.ico') }}">
 </head>
 <body>
-    {% include '_fragments/navbar.njk' %}
+    {% block navbar %}
+        {% call navbar.render() %}{% endcall %}
+    {% endblock %}
+
     <main class="flex -no-gutter content {{ background }}">
         {% block content %}{% endblock %}
     </main>

@@ -95,6 +95,27 @@ gulp.task('content', function () {
         });
     };
 
+    // var manageEnvironment = function (env) {
+    //     // Load all files from extensions directory
+    //     // and execute with the "env" argument.
+    //     var libs = require('require-all')({
+    //         dirname: __dirname + '/extensions'
+    //     });
+    //
+    //     var resolve = function (obj) {
+    //         for(var key in obj) {
+    //             var val = obj[key];
+    //             if(typeof val === 'function') {
+    //                 val(env);
+    //             } else {
+    //                 resolve(val);
+    //             }
+    //         }
+    //     };
+    //
+    //     resolve(libs);
+    // };
+
     var config = require(__dirname + '/app.json');
     if (gulp.seq.indexOf('watch') >= 0) {
         // If running the "watch" task then change host to the "/"
@@ -121,15 +142,23 @@ gulp.task('watch', function () {
     // watching for changes and run browsersync (proxy via the built-in PHP server).
     runSequence('clean', ['styles', 'scripts', 'images', 'libraries', 'public', 'indexes'], 'content', function () {
         var reloadAfterTasks = function(tasks) {
+            if(!Array.isArray(tasks)) {
+                tasks = [tasks];
+            }
+
+            tasks.push(function () {
+                browserSync.reload();
+            });
+
             return function() {
-                runSequence(tasks, function () { browserSync.reload() });
+                runSequence.apply(this, tasks);
             };
         };
 
         // Triggered watch will perform specified task(s) and reload the page
         // when the specified task ends successfully (achieved via reloadAfterTasks).
         gulp.watch(['content/**/*.md'], reloadAfterTasks('indexes'));
-        gulp.watch(['content/**/*.md', 'template/views/**/*.njk'], reloadAfterTasks('content'));
+        gulp.watch(['content/**/*.md', 'template/views/**/*.njk'], reloadAfterTasks(['indexes', 'content']));
         gulp.watch(['template/styles/**/*.scss'], reloadAfterTasks('styles'));
         gulp.watch(['template/scripts/**/*.js'], reloadAfterTasks('scripts'));
         gulp.watch(['template/images/**/*.{png,jpg,gif,svg}'], reloadAfterTasks('images'));

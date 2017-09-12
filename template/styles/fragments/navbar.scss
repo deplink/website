@@ -47,7 +47,7 @@
 .navbar-mobile-toggle {
     display: none;
     position: fixed;
-    top: 0; right: 0;
+    top: 0; left: 0;
     border-radius: 100%;
     transition: background 0.3s;
     width: (0.8 * $navbar-height);
@@ -79,6 +79,12 @@
     }
 }
 
+.navbar-mobile-line {
+    border: none;
+    background: white;
+    height: 2px;
+    opacity: 0.2;
+}
 
 @include media(null, $navbar-breakpoint - 1px) {
     .navbar-desktop {

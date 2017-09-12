@@ -1,0 +1,21 @@
+.wiki {
+    @extend .flex;
+    @extend .-wrap;
+    @extend .container;
+}
+
+.wiki-menu {
+    @extend .xs-3;
+    @extend .bg-gray;
+    @include lt(lg) {
+        display: none;
+    }
+}
+
+.wiki-body {
+    @extend .xs-9;
+    @extend .bg-white;
+    @include gte(lg) {
+        padding-left: $lg-gap;
+    }
+}

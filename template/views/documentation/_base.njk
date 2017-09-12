@@ -1,0 +1,45 @@
+{% extends "layout.njk" %}
+{% set background = 'bg-gray2white' %}
+
+{% block navbar %}
+    {% call navbar.render() %}
+    <hr class="navbar-mobile-line mtm">
+    <ul class="menu -dark">
+        {% for group, articles in groupBy('group', documentationPages) %}
+            <li class="mtm menu-header">{{ group }}</li>
+            {% for article in articles %}
+                <li class="menu-item">
+                    <a href="{{ url(article.url) }}">{{ article.menuTitle|default(article.title) }}</a>
+                </li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+    {% endcall %}
+{% endblock %}
+
+{% block content %}
+    <div class="wiki">
+        <aside class="wiki-menu">
+            <ul class="menu mbm">
+                {% for group, articles in groupBy('group', documentationPages) %}
+                    <li class="mtm menu-group">{{ group }}</li>
+                    {% for article in articles %}
+                        <li class="menu-item">
+                            <a href="{{ url(article.url) }}">{{ article.menuTitle|default(article.title) }}</a>
+                        </li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </aside>
+        <article class="wiki-body">
+            <div class="mtm mbm">
+                <h1>{{ page.title }}</h1>
+                <p class="mtx">{{ page.description }}</p>
+
+                <div class="markdown mtm mbl">
+                    {% block markdown %}{% endblock %}
+                </div>
+            </div>
+        </article>
+    </div>
+{% endblock %}

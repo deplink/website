@@ -14,9 +14,10 @@ module.exports = function (env) {
             }
 
             var key = keys.shift();
-            var diff = a[key] - b[key];
+            var kA = a[key] || 0;
+            var kB = b[key] || 0;
 
-            return diff < 0 ? -1 : (diff > 0 ? 1 : cmp(a, b, keys));
+            return kA < kB ? -1 : (kA > kB ? 1 : cmp(a, b, keys));
         }
 
         return data.sort(function (a, b) {

@@ -12,6 +12,7 @@
 
 @import 'base/helpers/color';
 @import 'base/helpers/size';
+@import 'base/helpers/responsive';
 
 @import 'collections/dropdown';
 @import 'collections/flex';
@@ -25,3 +26,4 @@
 @import 'fragments/banner';
 @import 'fragments/footer';
 @import 'fragments/navbar';
+@import 'fragments/wiki';
