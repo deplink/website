@@ -16,7 +16,7 @@
     <meta property="og:title" content="{{ page.title }}">
     <meta property="og:description" content="{{ page.description }}">
 
-    <script> document.documentElement.className = document.documentElement.className.replace("no-js","js"); </script>
+    <script> document.documentElement.className = document.documentElement.className.replace("no-js", "js"); </script>
     <link rel="stylesheet" href="{{ url('https://fonts.googleapis.com/css?family=Raleway:700') }}">
     <link rel="stylesheet" href="{{ url('libraries/icomoon/style.css') }}">
     <link rel="stylesheet" href="{{ url('compiled/app.css') }}">
@@ -24,13 +24,17 @@
 </head>
 <body>
     {% block navbar %}
+        {# Defining navbar using block and macro allows
+         # to extend navbar with custom content. #}
         {% call navbar.render() %}{% endcall %}
     {% endblock %}
 
     <main class="flex -no-gutter content {{ background }}">
         {% block content %}{% endblock %}
     </main>
+
     {% include '_fragments/footer.njk' %}
+    {% include '_fragments/quick-access.njk' %}
 
     {% block scripts %}
         {% include '_fragments/indexes.njk' %}

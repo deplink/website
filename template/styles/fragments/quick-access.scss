@@ -1,0 +1,75 @@
+$quick-access-field-offset: $navbar-height + $sm-gap;
+$quick-access-menu-offset: $quick-access-field-offset + $quick-access-field-height;
+
+.quick-access-field {
+    z-index: 100;
+    position: fixed;
+    top: $quick-access-field-offset;
+    height: $quick-access-field-height;
+
+    border: none;
+    box-shadow: 0 0 3px rgba(black, 0.6);
+    font-size: $font-size-normal;
+    padding: (2*$xs-gap) $sm-gap;
+    display: none;
+
+    &:hover, &:focus {
+        outline: none;
+    }
+}
+
+.quick-access-menu {
+    z-index: 99;
+    position: fixed;
+    top: $quick-access-menu-offset;
+    box-shadow: 0 2px 3px rgba(black, 0.6);
+    max-height: calc(100% - #{$quick-access-menu-offset + $sm-gap});
+
+    flex: 1 1 auto;
+    overflow-y: auto;
+    background: white;
+    // TODO: Style scrollbar
+}
+
+.quick-access-menu,
+.quick-access-field {
+    max-width: $quick-access-width;
+    margin-left: -($quick-access-width / 2);
+    left: 50%;
+    width: 100%;
+
+    @include media(null, $quick-access-width + 2*$sm-gap) {
+        margin-left: 0;
+        left: $sm-gap;
+        right: $sm-gap;
+        width: calc(100% - #{2*$sm-gap});
+    }
+}
+
+.quick-access-menu-item {
+    display: none;
+    color: $font-color;
+    padding: (2*$xs-gap) $sm-gap;
+    background: $quick-access-item-backgroud;
+    transition: background 0.3s;
+    cursor: pointer;
+
+    &:hover, &:focus, &.-selected {
+        outline: none;
+        color: $font-color;
+        background: rgba($second, 0.2);
+    }
+
+    & + & {
+        border-top: 1px solid $quick-access-item-border;
+    }
+
+    small {
+        font-size: $font-size-tiny;
+        color: rgba($font-color, 0.5);
+    }
+
+    b {
+        //background: rgba(yellow, 0.4);
+    }
+}

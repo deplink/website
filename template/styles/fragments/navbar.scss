@@ -73,6 +73,8 @@
     height: calc(100% - #{$navbar-height});
     width: 100%;
     overflow-y: auto;
+    max-width: $navbar-mobile-width;
+    box-shadow: 0 2px 5px rgba(black, 0.6);
 
     &.navbar-mobile.-visible {
         margin-left: 0;

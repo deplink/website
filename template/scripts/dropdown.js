@@ -73,6 +73,7 @@ module.exports = function () {
         }
     }
 
+    $('.dropdown').on('hide', hide);
     $('.dropdown-link').click(toggle);
     $(document).click(hideAllWithout);
     $(document).keydown(handleKeyDown);

@@ -18,4 +18,9 @@
     @include gte(lg) {
         padding-left: $lg-gap;
     }
+
+    @include lt(lg) {
+        width: 100%;
+        flex-basis: 100%;
+    }
 }
