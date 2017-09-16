@@ -15,6 +15,13 @@ var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
 var markdownToJSON = require('gulp-markdown-to-json');
 
+var config = require(__dirname + '/app.json');
+if (process.argv.indexOf("--local") >= 0) {
+    // If running the "watch" task then change host to the "/"
+    // (without this generated urls are incompatible with browsersync).
+    config.host = '/';
+}
+
 gulp.task('clean', function () {
     return del(['build']);
 });
@@ -56,7 +63,6 @@ gulp.task('public', function () {
 });
 
 gulp.task('indexes', function () {
-    var config = require(__dirname + '/app.json');
     var transform = function (data, file) {
         // Remove keys which can contain markdown content
         // (search only through the metadata to improve performance)
@@ -85,6 +91,8 @@ gulp.task('indexes', function () {
 
 gulp.task('content', function () {
     var manageEnvironment = function (env) {
+        env.addGlobal('app', config);
+
         // Load all files from extensions directory
         // and execute with the "env" argument.
         require('require-all')({
@@ -96,18 +104,10 @@ gulp.task('content', function () {
         });
     };
 
-    var config = require(__dirname + '/app.json');
-    if (gulp.seq.indexOf('watch') >= 0) {
-        // If running the "watch" task then change host to the "/"
-        // (without this generated urls are incompatible with browsersync).
-        config.host = '/';
-    }
-
     return gulp.src('content/**/*.md')
         .pipe(nunjucksMd({
             path: 'template/views',
             manageEnv: manageEnvironment,
-            data: { app: config },
             block: 'markdown'
         }))
         .pipe(htmlmin({

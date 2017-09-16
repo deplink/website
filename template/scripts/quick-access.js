@@ -9,7 +9,7 @@ module.exports = function () {
         location: 0,
         distance: 100,
         maxPatternLength: 32,
-        minMatchCharLength: 2,
+        minMatchCharLength: 3,
         keys: [{
             name: 'title',
             weight: 0.5
@@ -41,7 +41,7 @@ module.exports = function () {
     var quickAccessMenu = quickAccess.find('.quick-access-menu');
 
     function init() {
-        $.getJSON('compiled/indexes.json', function(json) {
+        $.getJSON('/compiled/indexes.json', function(json) {
             var indexes = [];
             for(key in json) {
                 indexes.push(json[key]);
@@ -105,22 +105,47 @@ module.exports = function () {
         quickAccessMenu.find('.quick-access-menu-item').remove();
 
         $.each(items, function(i, item) {
-            var matches = item['matches'];
+            var matches = item['matches'] || [];
             var data = item['item'] || item;
 
-            // TODO: Bold matches
+            var html = {
+                title: data.title || '',
+                description: data.description || '',
+                url: data.url || ''
+            };
+
+            $.each(matches, function(i, match) {
+                html[match.key] = boldMatches(html[match.key], match.indices);
+            });
 
             var menuItem = $(
                 '<div class="quick-access-menu-item" data-url="' + data.url + '">' +
-                '   <p>'+ data.title +'</p>' +
-                '   <small>'+ (data.description || '') +'</small>' +
-                '   <small>'+ data.url +'</small>' +
+                '   <p>'+ html.title +'</p>' +
+                '   <small>'+ html.description +'</small>' +
+                '   <small>'+ html.url +'</small>' +
                 '</div>'
             );
 
             quickAccessMenu.append(menuItem);
             menuItem.click(onMenuItemClick);
         });
+    }
+
+    function insertStrToStrAt(str, text, index) {
+        text = text.split('');
+        text.splice(index , 0, str);
+        return text.join('');
+    }
+
+    function boldMatches(str, indices) {
+        indices = indices.reverse();
+
+        $.each(indices, function(i, index) {
+            str = insertStrToStrAt('</b>', str, index[1] + 1);
+            str = insertStrToStrAt('<b>', str, index[0]);
+        });
+
+        return str;
     }
 
     function showLoader() {

@@ -13,7 +13,7 @@
     },
     "scripts": {
         "prod": "gulp",
-        "dev": "gulp watch"
+        "dev": "gulp watch --local"
     },
     "devDependencies": {
         "browser-sync": "^2.18.13",

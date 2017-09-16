@@ -1,6 +1,10 @@
 $quick-access-field-offset: $navbar-height + $sm-gap;
 $quick-access-menu-offset: $quick-access-field-offset + $quick-access-field-height;
 
+.quick-access {
+    flex: 0 0 0;
+}
+
 .quick-access-field {
     z-index: 100;
     position: fixed;
@@ -60,10 +64,18 @@ $quick-access-menu-offset: $quick-access-field-offset + $quick-access-field-heig
     transition: background 0.3s;
     cursor: pointer;
 
+    b {
+        transition: background 0.3s;
+    }
+
     &:hover, &:focus, &.-selected {
         outline: none;
         color: $font-color;
         background: rgba($second, 0.2);
+
+        b {
+            background: rgba(yellow, 0.4);
+        }
     }
 
     & + & {
@@ -80,9 +92,5 @@ $quick-access-menu-offset: $quick-access-field-offset + $quick-access-field-heig
             text-overflow: ellipsis;
             overflow: hidden;
         }
-    }
-
-    b {
-        //background: rgba(yellow, 0.4);
     }
 }
