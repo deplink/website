@@ -1,7 +1,6 @@
 module.exports = function () {
 
     var animTime = 200;
-    var animDelay = 40;
     var fuseOptions = {
         shouldSort: true,
         findAllMatches: true,
@@ -24,8 +23,15 @@ module.exports = function () {
     };
 
     var keys = {
-        F2: 113,
-        Esc: 27
+        f2: 113,
+        esc: 27,
+        enter: 13,
+        arrows: {
+            left: 37,
+            up: 38,
+            right: 39,
+            down: 40
+        }
     };
 
     var fuse = null;
@@ -62,16 +68,9 @@ module.exports = function () {
         isVisible = true;
         $('.dropdown').trigger('hide');
 
-        var delay = animTime;
-        var items = quickAccessMenu.find('.quick-access-menu-item');
-
         quickAccessField.stop(true).slideDown(animTime);
+        quickAccessMenu.stop(true).delay(animTime).slideDown(animTime);
         quickAccessField.select();
-
-        $.each(items, function (i, item) {
-            $(item).stop(true).delay(delay).slideDown(animTime);
-            delay += animDelay;
-        });
     }
 
     /**
@@ -80,15 +79,8 @@ module.exports = function () {
     function hide() {
         isVisible = false;
 
-        var delay = 0;
-        var items = quickAccessMenu.find('.quick-access-menu-item').get().reverse();
-
-        $.each(items, function (i, item) {
-            $(item).stop(true).delay(delay).slideUp(animTime / 2);
-            delay += animDelay / 2;
-        });
-
-        quickAccessField.stop(true).delay(delay + animTime / 2).slideUp(animTime / 2);
+        quickAccessMenu.stop(true).slideUp(animTime / 2);
+        quickAccessField.stop(true).delay(animTime / 2).slideUp(animTime / 2);
     }
 
     /**
@@ -116,6 +108,8 @@ module.exports = function () {
             var matches = item['matches'];
             var data = item['item'] || item;
 
+            // TODO: Bold matches
+
             var menuItem = $(
                 '<div class="quick-access-menu-item" data-url="' + data.url + '">' +
                 '   <p>'+ data.title +'</p>' +
@@ -125,16 +119,16 @@ module.exports = function () {
             );
 
             quickAccessMenu.append(menuItem);
-            menuItem.slideDown(0);
+            menuItem.click(onMenuItemClick);
         });
     }
 
     function showLoader() {
-        // ...
+        quickAccessField.addClass('-loading');
     }
 
     function hideLoader() {
-        // ...
+        quickAccessField.removeClass('-loading');
     }
 
     function search() {
@@ -153,20 +147,115 @@ module.exports = function () {
         }
 
         setItems(fuse.search(q));
+        hideLoader();
+    }
+
+    function getFocusedItem() {
+        return quickAccessMenu.find('.quick-access-menu-item.-selected').first();
+    }
+
+    function getFocusedItemOrFocus(index) {
+        var items = quickAccessMenu.find('.quick-access-menu-item');
+
+        var item = items.filter('.-selected');
+        if(item.length >= 1) {
+            return item.first();
+        }
+
+        return items.eq(index || 0);
+    }
+
+    function setFocusedItemByUrl(url) {
+        var item = quickAccessMenu.find('.quick-access-menu-item[data-url="'+ url +'"]');
+
+        item.addClass('-selected');
+        scrollToItem(item);
+    }
+
+    function scrollToItem(item) {
+        var offset = 0;
+        var prevItems = $(item).prevAll('.quick-access-menu-item');
+        $.each(prevItems, function(i, prevItem) {
+            offset += $(prevItem).outerHeight();
+        });
+
+        // Scroll down only if bottom part of the element is not visible
+        var bottomSpace = quickAccessMenu.scrollTop() + quickAccessMenu.height() - offset - item.outerHeight();
+        if(bottomSpace < 0) {
+            var scroll = quickAccessMenu.scrollTop() - bottomSpace;
+            quickAccessMenu.animate({ scrollTop: scroll + 'px' }, animTime/4);
+        }
+
+        // Scroll up only if top part of the element is not visible
+        var topSpace = offset - quickAccessMenu.scrollTop();
+        if(topSpace < 0) {
+            var scroll = quickAccessMenu.scrollTop() + topSpace;
+            quickAccessMenu.animate({ scrollTop: scroll + 'px' }, animTime/4);
+        }
+    }
+
+    function focusNextItem(item) {
+        var nextItem = item.next('.quick-access-menu-item');
+
+        if(nextItem.length <= 0) {
+            var items = quickAccessMenu.find('.quick-access-menu-item');
+            nextItem = items.first();
+        }
+
+        item.removeClass('-selected');
+        nextItem.addClass('-selected');
+    }
+
+    function focusPrevItem(item) {
+        var prevItem = item.prev('.quick-access-menu-item');
+
+        if(prevItem.length <= 0) {
+            var items = quickAccessMenu.find('.quick-access-menu-item');
+            prevItem = items.last();
+        }
+
+        item.removeClass('-selected');
+        prevItem.addClass('-selected');
+    }
+
+    function onFieldKeyDown(e) {
+        var key = e.which || e.key;
+
+        if(key === keys.arrows.down) {
+            var item = getFocusedItemOrFocus(-1);
+            focusNextItem(item);
+        }
+
+        if(key === keys.arrows.up) {
+            e.preventDefault();
+            var item = getFocusedItemOrFocus(0);
+            focusPrevItem(item);
+        }
+
+        if(key === keys.enter) {
+            var item = getFocusedItemOrFocus(0);
+            item.click();
+        }
+    }
+
+    function onFieldKeyUp(e) {
+        var key = e.which || e.key;
+        var focused = getFocusedItem();
+
+        search();
+        setFocusedItemByUrl(focused.data('url'));
     }
 
     function onKeyDown(e) {
         var key = e.which || e.key;
 
-        if (key === keys.F2) {
+        if (key === keys.f2) {
             toggle();
         }
 
-        if (isVisible && key === keys.Esc) {
+        if (isVisible && key === keys.esc) {
             hide()
         }
-
-        // TODO: Selecting menu item using arrow keys and enter key handler
     }
 
     function onClick(e) {
@@ -176,8 +265,12 @@ module.exports = function () {
         }
     }
 
-    quickAccess.focusout(hide);
-    quickAccessField.keyup(search);
+    function onMenuItemClick(e) {
+        window.location.href = $(this).data('url');
+    }
+
+    quickAccessField.keydown(onFieldKeyDown);
+    quickAccessField.keyup(onFieldKeyUp);
     $(window).keydown(onKeyDown);
     $(document).click(onClick);
 

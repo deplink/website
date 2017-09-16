@@ -11,7 +11,12 @@ $quick-access-menu-offset: $quick-access-field-offset + $quick-access-field-heig
     box-shadow: 0 0 3px rgba(black, 0.6);
     font-size: $font-size-normal;
     padding: (2*$xs-gap) $sm-gap;
-    display: none;
+
+    &.-loading {
+        padding-right: ($sm-gap + 16px);
+        border-right: $sm-gap solid white;
+        background: white url('../images/loader.gif') right center no-repeat;
+    }
 
     &:hover, &:focus {
         outline: none;
@@ -33,6 +38,7 @@ $quick-access-menu-offset: $quick-access-field-offset + $quick-access-field-heig
 
 .quick-access-menu,
 .quick-access-field {
+    display: none;
     max-width: $quick-access-width;
     margin-left: -($quick-access-width / 2);
     left: 50%;
@@ -47,7 +53,7 @@ $quick-access-menu-offset: $quick-access-field-offset + $quick-access-field-heig
 }
 
 .quick-access-menu-item {
-    display: none;
+    display: block;
     color: $font-color;
     padding: (2*$xs-gap) $sm-gap;
     background: $quick-access-item-backgroud;
@@ -68,7 +74,7 @@ $quick-access-menu-offset: $quick-access-field-offset + $quick-access-field-heig
         display: block;
         font-size: $font-size-tiny;
         color: rgba($font-color, 0.5);
-
+        
         @include media(null, $quick-access-width + 2*$sm-gap) {
             white-space: nowrap;
             text-overflow: ellipsis;

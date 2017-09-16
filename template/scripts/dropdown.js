@@ -63,12 +63,12 @@ module.exports = function () {
 
         var key = e.keyCode || e.which;
         if ([enterKey, spaceKey].indexOf(key) >= 0) {
-            // Enter or space pressed
+            // enter or space pressed
             toggle('.dropdown-link:focus');
         }
 
         if(key === escKey) {
-            // Esc pressed
+            // esc pressed
             hideAll();
         }
     }
