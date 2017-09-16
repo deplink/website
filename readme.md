@@ -21,7 +21,7 @@ Processing Workflow
 
 ### Website Content
 
-Each markdown file is associated with unique url which is resolved from file path (e.g. `content/community/partners.md` will be available under the `https://deplink.com/community/partners` url).
+Each markdown file is associated with unique url which is resolved from file path (e.g. `content/community/partners.md` will be available under the `https://deplink.org/community/partners` url).
 
 Markdown files placed in the `content` directory have following processing workflow (files are processed in random order):
 

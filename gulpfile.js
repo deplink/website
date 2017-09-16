@@ -56,6 +56,7 @@ gulp.task('public', function () {
 });
 
 gulp.task('indexes', function () {
+    var config = require(__dirname + '/app.json');
     var transform = function (data, file) {
         // Remove keys which can contain markdown content
         // (search only through the metadata to improve performance)
@@ -71,7 +72,7 @@ gulp.task('indexes', function () {
         // Append url associated with the markdown to the output data
         // (unify directory separator and remove .md extension).
         data.url = relativePath.replace(/[\\/]/g, '/').slice(0, -3);
-        data.url = data.url === 'index' ? '/' : data.url;
+        data.url = data.url === 'index' ? config.host : config.host + data.url;
 
         return data;
     };
@@ -94,27 +95,6 @@ gulp.task('content', function () {
             }
         });
     };
-
-    // var manageEnvironment = function (env) {
-    //     // Load all files from extensions directory
-    //     // and execute with the "env" argument.
-    //     var libs = require('require-all')({
-    //         dirname: __dirname + '/extensions'
-    //     });
-    //
-    //     var resolve = function (obj) {
-    //         for(var key in obj) {
-    //             var val = obj[key];
-    //             if(typeof val === 'function') {
-    //                 val(env);
-    //             } else {
-    //                 resolve(val);
-    //             }
-    //         }
-    //     };
-    //
-    //     resolve(libs);
-    // };
 
     var config = require(__dirname + '/app.json');
     if (gulp.seq.indexOf('watch') >= 0) {

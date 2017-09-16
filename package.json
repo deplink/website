@@ -1,7 +1,7 @@
 {
     "name": "deplink",
     "author": "Wojciech Mleczek <mleczek.wojtek@gmail.com>",
-    "homepage": "https://deplink.com/",
+    "homepage": "https://deplink.org/",
     "license": "MIT",
     "private": true,
     "repository": {

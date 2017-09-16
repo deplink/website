@@ -65,8 +65,15 @@ $quick-access-menu-offset: $quick-access-field-offset + $quick-access-field-heig
     }
 
     small {
+        display: block;
         font-size: $font-size-tiny;
         color: rgba($font-color, 0.5);
+
+        @include media(null, $quick-access-width + 2*$sm-gap) {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
     }
 
     b {

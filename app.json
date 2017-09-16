@@ -1,5 +1,5 @@
 {
-    "host": "https://deplink.com/",
+    "host": "https://deplink.org/",
     "author": "Wojciech Mleczek",
 
     "github": {
@@ -11,6 +11,6 @@
     },
 
     "repo": {
-        "url": "https://repo.deplink.com"
+        "url": "https://repo.deplink.org"
     }
 }
