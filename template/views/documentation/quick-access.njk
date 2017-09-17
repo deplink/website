@@ -1,14 +1,23 @@
 {% extends "_layout.njk" %}
-{% set background = 'bg-white' %}
+{% set background = 'bg-gray' %}
 
 {% block content %}
-    <div class="mtm mbl">
-        <div class="container">
-            <div class="markdown">
-                {% block markdown %}{% endblock %}
-            </div>
+    <div>
 
-            {# TODO: Banner - "If you do not know what deplink is for... go to Getting Started section" #}
-        </div>
+        <section class="bg-white ptm pbl">
+            <div class="container">
+                <div class="markdown">
+                    {% block markdown %}{% endblock %}
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-gray">
+            <div class="container pbs text-center">
+                <h1> What I'm doing here? </h1>
+                <p class="mtm"> Probably you're here because you visit the homepage for the first time and see section which tells you to try the help command... well, if I interested you enough to visit this page then give a try to the next page where you'll find answers for the questions: <b>What exactly is the Deplink? And how it works?</b> </p>
+                <div class="mtm"><a class="button" href="{{ url('documentation/guide/getting-started') }}">Getting Started</a></div>
+            </div>
+        </section>
     </div>
 {% endblock %}
