@@ -6,11 +6,25 @@
     margin-top: $md-gap;
 }
 
-.markdown p {
-    margin-top: $sm-gap;
+.markdown {
+    ul, ol, p, pre {
+        margin-top: $sm-gap;
+    }
 }
 
-.markdown ul {
-    margin-top: $sm-gap;
-    margin-left: $md-gap;
+.markdown ul li + li,
+.markdown ol li + li {
+    padding-top: $xs-gap;
+}
+
+.markdown code {
+    @extend .code;
+}
+
+.markdown {
+    ul, ol, p {
+        code {
+            @extend .-inline;
+        }
+    }
 }

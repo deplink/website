@@ -27,3 +27,7 @@ code {
     white-space: nowrap;
     overflow-x: auto;
 }
+
+ul, ol {
+    margin-left: $md-gap;
+}

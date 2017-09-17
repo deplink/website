@@ -2,9 +2,35 @@
 {% set background = 'bg-white' %}
 
 {% block content %}
-    <div class="mtm mbl">
-        <div class="container">
-            {# TODO: Infor about development in progress #}
+    <div>
+        <div class="alert">
+            <div class="container">
+                <b> Note: </b> Deplink is still under heavy development. Use it only for testing purposes.
+            </div>
         </div>
+
+        <section class="bg-gray  ptm pbl">
+            <div class="container text-center">
+                <h1> Download </h1>
+                <p class="mtm"> Use below button to download latest version of cross-platform Deplink CLI. Currently Deplink is under development and only <b>bleeding-edge releases</b> are available. <strong>Deplink is free and always will be available for free</strong>. </p>
+                <a class="mtm button" href="{{ url('download/phar/deplink.phar') }}"> Download phar </a>
+                <p class="mts font-tiny"> Last updated at 17/09/2017 - MIT License </p>
+            </div>
+        </section>
+
+        <section class="ptm pbl">
+            <div class="container">
+                <div class="markdown">
+                    <h1> Installation Instructions </h1>
+                    <p> Instructions to run Deplink CLI from phar on Windows, Linux and Mac: </p>
+                    <ol>
+                        <li> Install PHP in version 5.6 or greater (version 7.x is also supported)</li>
+                        <li> Add PHP to your PATH environment variable </li>
+                        <li> Download Deplink archive (<a href="{{ url('download/phar/deplink.phar') }}">click to get latest version</a> or build from <a href="{{ url(app.github.url + '/deplink') }}">source</a>) </li>
+                        <li> Run Deplink using <code>php deplink.phar help</code> command</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
     </div>
 {% endblock %}

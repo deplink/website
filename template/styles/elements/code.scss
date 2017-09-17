@@ -1,0 +1,13 @@
+.code {
+    display: block;
+    background: $gray;
+    font-family: $font-family-code;
+    font-size: $font-size-small;
+    padding: $sm-gap $md-gap;
+    border-radius: 4px;
+
+    &.-inline {
+        display: inline;
+        padding: 2px 4px;
+    }
+}
