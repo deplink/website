@@ -11,14 +11,17 @@ module.exports = function () {
         maxPatternLength: 32,
         minMatchCharLength: 3,
         keys: [{
+            name: 'shortcut',
+            weight: 0.55
+        }, {
             name: 'title',
-            weight: 0.5
+            weight: 0.30
         }, {
             name: 'description',
-            weight: 0.2
+            weight: 0.05
         }, {
             name: 'url',
-            weight: 0.3
+            weight: 0.10
         }]
     };
 
@@ -115,7 +118,9 @@ module.exports = function () {
             };
 
             $.each(matches, function(i, match) {
-                html[match.key] = boldMatches(html[match.key], match.indices);
+                if(html[match.key] !== undefined) {
+                    html[match.key] = boldMatches(html[match.key], match.indices);
+                }
             });
 
             var menuItem = $(
@@ -284,7 +289,7 @@ module.exports = function () {
     }
 
     function onClick(e) {
-        var clickedOutsideQuickAccess = $(e.target).parents(quickAccess).length <= 0;
+        var clickedOutsideQuickAccess = $(e.target).closest('.quick-access').length <= 0;
         if (isVisible && clickedOutsideQuickAccess) {
             hide();
         }

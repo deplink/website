@@ -1,0 +1,14 @@
+{% extends "layout.njk" %}
+{% set background = 'bg-white' %}
+
+{% block content %}
+    <div class="mtm mbl">
+        <div class="container">
+            <div class="markdown">
+                {% block markdown %}{% endblock %}
+            </div>
+
+            {# TODO: Banner - "If you do not know what deplink is for... go to Getting Started section" #}
+        </div>
+    </div>
+{% endblock %}

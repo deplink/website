@@ -1,0 +1,16 @@
+.markdown h1 + p {
+    margin-top: $xs-gap;
+}
+
+.markdown h2 {
+    margin-top: $md-gap;
+}
+
+.markdown p {
+    margin-top: $sm-gap;
+}
+
+.markdown ul {
+    margin-top: $sm-gap;
+    margin-left: $md-gap;
+}
