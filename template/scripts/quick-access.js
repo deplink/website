@@ -39,6 +39,7 @@ module.exports = function () {
 
     var fuse = null;
     var isVisible = false;
+    var userSelection = false;
     var quickAccess = $('.quick-access');
     var quickAccessField = quickAccess.find('.quick-access-field');
     var quickAccessMenu = quickAccess.find('.quick-access-menu');
@@ -166,6 +167,8 @@ module.exports = function () {
 
         // Empty value, stop searching
         if(q.length <= 0) {
+            setItems([]);
+            userSelection = false;
             return hideLoader();
         }
 
@@ -196,8 +199,10 @@ module.exports = function () {
     }
 
     function setFocusedItemByUrl(url) {
-        var item = quickAccessMenu.find('.quick-access-menu-item[data-url="'+ url +'"]');
+        var items = quickAccessMenu.find('.quick-access-menu-item');
+        var item = items.filter('[data-url="'+ url +'"]');
 
+        items.removeClass('-selected');
         item.addClass('-selected');
         scrollToItem(item);
     }
@@ -252,12 +257,14 @@ module.exports = function () {
         var key = e.which || e.key;
 
         if(key === keys.arrows.down) {
+            userSelection = true;
             var item = getFocusedItemOrFocus(-1);
             focusNextItem(item);
         }
 
         if(key === keys.arrows.up) {
             e.preventDefault();
+            userSelection = true;
             var item = getFocusedItemOrFocus(0);
             focusPrevItem(item);
         }
@@ -273,6 +280,11 @@ module.exports = function () {
         var focused = getFocusedItem();
 
         search();
+
+        if(!userSelection) {
+            focused = quickAccessMenu.find('.quick-access-menu-item').first();
+        }
+
         setFocusedItemByUrl(focused.data('url'));
     }
 
@@ -289,6 +301,12 @@ module.exports = function () {
     }
 
     function onClick(e) {
+        var clickedToggleButton = $(e.target).closest('.navbar-quick-access').length > 0;
+        if(clickedToggleButton) {
+            toggle();
+            return false;
+        }
+
         var clickedOutsideQuickAccess = $(e.target).closest('.quick-access').length <= 0;
         if (isVisible && clickedOutsideQuickAccess) {
             hide();

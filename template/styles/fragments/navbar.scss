@@ -44,10 +44,11 @@
     }
 }
 
-.navbar-mobile-toggle {
+.navbar-mobile-toggle,
+.navbar-quick-access {
     display: none;
     position: fixed;
-    top: 0; left: 0;
+    top: 0;
     border-radius: 100%;
     transition: background 0.3s;
     width: (0.8 * $navbar-height);
@@ -61,6 +62,14 @@
         background: $gray;
         outline: none;
     }
+}
+
+.navbar-mobile-toggle {
+    left: 0;
+}
+
+.navbar-quick-access {
+    right: 0;
 }
 
 .navbar-mobile {
@@ -94,7 +103,8 @@
     }
 
     .navbar-mobile,
-    .navbar-mobile-toggle {
+    .navbar-mobile-toggle,
+    .navbar-quick-access {
         display: block;
     }
 }

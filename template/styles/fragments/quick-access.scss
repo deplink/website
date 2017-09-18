@@ -6,12 +6,13 @@ $quick-access-menu-offset: $quick-access-field-offset + $quick-access-field-heig
 }
 
 .quick-access-field {
-    z-index: 100;
+    z-index: 99;
     position: fixed;
     top: $quick-access-field-offset;
     height: $quick-access-field-height;
 
     border: none;
+    border-bottom: 1px solid $gray;
     box-shadow: 0 0 3px rgba(black, 0.6);
     font-size: $font-size-normal;
     padding: (2*$xs-gap) $sm-gap;
@@ -28,10 +29,10 @@ $quick-access-menu-offset: $quick-access-field-offset + $quick-access-field-heig
 }
 
 .quick-access-menu {
-    z-index: 99;
+    z-index: 100;
     position: fixed;
     top: $quick-access-menu-offset;
-    box-shadow: 0 2px 3px rgba(black, 0.6);
+    box-shadow: 0 1px 3px rgba(black, 0.6);
     max-height: calc(100% - #{$quick-access-menu-offset + $sm-gap});
 
     flex: 1 1 auto;

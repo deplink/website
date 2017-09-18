@@ -20,7 +20,7 @@
 {% block content %}
     <div class="wiki">
         <aside class="wiki-menu">
-            <ul class="menu mbm">
+            <ul class="menu mts mbl">
                 {% for group, articles in groupBy('group', documentationPages) %}
                     <li class="mtm menu-group">{{ group }}</li>
                     {% for article in articles %}
@@ -32,11 +32,11 @@
             </ul>
         </aside>
         <article class="wiki-body">
-            <div class="mtm mbm">
+            <div class="section">
                 <h1>{{ page.title }}</h1>
                 <p class="mtx">{{ page.description }}</p>
 
-                <div class="markdown mtm mbl">
+                <div class="markdown mtm">
                     {% block markdown %}{% endblock %}
                 </div>
             </div>
