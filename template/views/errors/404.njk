@@ -1,0 +1,16 @@
+{% extends '_layout.njk' %}
+{% set background = 'bg-gray -middle' %}
+
+{% block content %}
+    <div class="section">
+        <div class="container text-center">
+            <span class="icon-alert-triangle" style="font-size: 60px;"></span>
+            <h1 class="mts"> Not Found </h1>
+            <p><strong> 404 Response Code </strong></p>
+
+            <p class="mtm"> We searched every corner of the site for this page... <br> and <b>we didn't find anything interesting</b>, what's more we didn't find anything! </p>
+
+            <p class="mtm"> Where did you get this link? <b>We recommend <a href="{{ url('/') }}">back to the homepage</a>.</b></p>
+        </div>
+    </div>
+{% endblock %}
