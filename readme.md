@@ -42,6 +42,19 @@ All sections listed below are processed in parallel:
 - **Scripts** - the `template/scripts/app.js` script is processed using browserify and minified. Output is saved to the `build/compiled/app.js` file.
 - **Styles** - the `template/scripts/app.scss` style is processed using sass and minified. Output is stored in the `build/compiled/app.css` file.
 
+Writing Content
+---------------
+
+Frontmatter options:
+
+- `layout` - specify layout path relative to the `template/views` directory (without .njk extension)
+- `title` - page meta title (in some layouts could be displayed at the top of the page)
+- `menuTitle` - used with `documentation/quide` or `documentation/reference` layout to set link text in the menu (left pane)
+- `menuGroup` - used with `documentation/quide` or `documentation/reference` layout to group links in the menu (left pane)
+- `description` - page meta description
+- `exclude` - set any value to remove page from search results in Quick Access
+- `shortcut` - set text which can be used to find page in Quick Access (should contians only alphanum and dash symbols)
+
 License
 -------
 

@@ -64,6 +64,12 @@ gulp.task('public', function () {
 
 gulp.task('indexes', function () {
     var transform = function (data, file) {
+        // Skip indexing pages with
+        // "exclude" frontmatter key
+        if('exclude' in data) {
+            return {};
+        }
+
         // Remove keys which can contain markdown content
         // (search only through the metadata to improve performance)
         delete data.data;

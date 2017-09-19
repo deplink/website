@@ -5,7 +5,7 @@
     {% call navbar.render() %}
     <hr class="navbar-mobile-line mtm">
     <ul class="menu -dark">
-        {% for group, articles in groupBy('group', documentationPages) %}
+        {% for group, articles in groupBy('menuGroup', documentationPages) %}
             <li class="mtm menu-header">{{ group }}</li>
             {% for article in articles %}
                 <li class="menu-item">
@@ -21,7 +21,7 @@
     <div class="wiki">
         <aside class="wiki-menu">
             <ul class="menu mts mbl">
-                {% for group, articles in groupBy('group', documentationPages) %}
+                {% for group, articles in groupBy('menuGroup', documentationPages) %}
                     <li class="mtm menu-group">{{ group }}</li>
                     {% for article in articles %}
                         <li class="menu-item">

@@ -1,8 +1,9 @@
 module.exports = function (env) {
 
     var fs = require('fs');
-    var indexes = JSON.parse(fs.readFileSync(__dirname +'/../../../build/compiled/indexes.json', 'utf8'));
-    //var indexes = require('../../../build/compiled/indexes.json');
+    var indexes = JSON.parse(
+        fs.readFileSync(__dirname +'/../../../build/compiled/indexes.json', 'utf8')
+    );
 
     /**
      * Get list of pages. Results can be filtered by the user.
