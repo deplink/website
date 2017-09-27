@@ -83,8 +83,8 @@ gulp.task('indexes', function () {
 
         // Append url associated with the markdown to the output data
         // (unify directory separator and remove .md extension).
-        data.url = relativePath.replace(/[\\/]/g, '/').slice(0, -3);
-        data.url = data.url === 'index' ? config.host : config.host + data.url;
+        data.uri = relativePath.replace(/[\\/]/g, '/').slice(0, -3);
+        data.url = data.uri === 'index' ? config.host : config.host + data.uri;
 
         return data;
     };

@@ -25,7 +25,7 @@ module.exports = function (env) {
         }
 
         url = data.host +'/'+ url;
-        return url.replace(/\/+/, '/');
+        return url.replace(/\/+/g, '/');
     };
 
     env.addGlobal('url', fn);

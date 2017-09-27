@@ -43,6 +43,14 @@
                 <div class="markdown mtm">
                     {% block markdown %}{% endblock %}
                 </div>
+
+                <div class="mtl font-tiny">
+                    {% set uri = pages({layout: page.layout, title: page.title})[0].uri %}
+                    <a href="{{ url(app.github.url +'/website/blob/master/content/'+ uri +'.md') }}">
+                        <img class="mrx v-bottom" src="{{ url('images/icons/github.png') }}" height="22">
+                        Edit this page on GitHub
+                    </a>
+                </div>
             </div>
         </article>
     </div>

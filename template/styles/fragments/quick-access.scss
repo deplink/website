@@ -20,7 +20,7 @@ $quick-access-menu-offset: $quick-access-field-offset + $quick-access-field-heig
     &.-loading {
         padding-right: ($sm-gap + 16px);
         border-right: $sm-gap solid white;
-        background: white url('../images/loader.gif') right center no-repeat;
+        background: white url('../images/icons/loader.gif') right center no-repeat;
     }
 
     &:hover, &:focus {
