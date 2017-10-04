@@ -14,7 +14,7 @@ Install required dependencies (`npm install`) and run either `npm run prod` or `
 
 **Production mode** (`npm run prod`) generates output used for publishing new version of the website. In most cases you'd not need to use this mode.
 
-**Development mode** (`npm run dev`) build output compatible with the browsersync. This mode aromatically starts PHP built-in server as well as browsersync and open appropriate url in your browser. 
+**Development mode** (`npm run dev`) build output compatible with the browsersync. This mode automatically starts PHP built-in server as well as browsersync and open appropriate url in your browser. 
 
 Processing Workflow
 -------------------
