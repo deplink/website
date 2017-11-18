@@ -8,20 +8,20 @@ module.exports = function (env) {
             keys = [keys];
         }
 
-        function cmp(a, b, keys) {
-            if(keys.length === 0) {
+        function cmp(a, b, ab_keys) {
+            if(ab_keys.length === 0) {
                 return 0;
             }
 
-            var key = keys.shift();
+            var key = ab_keys.shift();
             var kA = a[key] || 0;
             var kB = b[key] || 0;
 
-            return kA < kB ? -1 : (kA > kB ? 1 : cmp(a, b, keys));
+            return kA < kB ? -1 : (kA > kB ? 1 : cmp(a, b, ab_keys));
         }
 
         return data.sort(function (a, b) {
-            return cmp(a, b, keys);
+            return cmp(a, b, keys.slice());
         });
     };
 

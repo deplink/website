@@ -21,7 +21,7 @@ if (php_sapi_name() === 'cli-server') {
 // 2. Redirect http to https (http://www.example.com -> https://www.example.com)
 // 3. Redirect www to non www (https://www.example.com -> https://example.com)
 // 4. Remove trailing .html (https://example.com/download.html -> https://example.com/download)
-// 5. Redirect all request except existing files (eq. images) to the router.php
+// 5. Redirect all request except existing files (eq. images) to the index.php
 if (file_exists($page)) {
     include $page;
 } else {

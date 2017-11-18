@@ -18,4 +18,4 @@ RewriteRule ^(.*)\.html$ /$1 [R=301,L]
 
 # Handle front controller
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ router.php [L]
+RewriteRule ^ index.php [L]

@@ -154,7 +154,7 @@ gulp.task('watch', function () {
         // after this operation init the browsersync instance.
         connect.server({
             base: 'build/',
-            router: 'build/router.php'
+            router: 'build/index.php'
         }, function () {
             browserSync({
                 proxy: '127.0.0.1:8000'
