@@ -1,3 +1,5 @@
+var normalizeUrl = require('normalize-url');
+
 module.exports = function (env) {
 
     var data = require('../../../app.json');
@@ -24,8 +26,7 @@ module.exports = function (env) {
             return url;
         }
 
-        url = data.host +'/'+ url;
-        return url.replace(/\/+/g, '/');
+        return normalizeUrl(data.host +'/'+ url);
     };
 
     env.addGlobal('url', fn);

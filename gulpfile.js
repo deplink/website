@@ -19,7 +19,7 @@ var config = require(__dirname + '/app.json');
 if (process.argv.indexOf("--local") >= 0) {
     // If running the "watch" task then change host to the "/"
     // (without this generated urls are incompatible with browsersync).
-    config.host = '/';
+    config.host = 'localhost:3000';
 }
 
 gulp.task('clean', function () {
