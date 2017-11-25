@@ -2,7 +2,7 @@
 {% set background = 'bg-white' %}
 
 {% block content %}
-    <div>
+    <div class="responsive">
         <div class="alert">
             <div class="container">
                 <b> Note: </b> Deplink is still under heavy development. Use it only for testing purposes.
@@ -13,8 +13,11 @@
             <div class="container text-center">
                 <h1> Download </h1>
                 <p class="mtm"> Use below button to download latest version of cross-platform Deplink CLI. Currently Deplink is under development and only <b>bleeding-edge releases</b> are available. <strong>Deplink is free and always will be available for free</strong>. </p>
-                <a class="mtm button" href="{{ url('download/phar/deplink.phar') }}"> Download phar </a>
-                <p class="mts font-tiny"> Last updated at 17/09/2017 - MIT License </p>
+                <div class="mtm">
+                    <a class="mts mlx mrx button" href="{{ url(app.cdn.url ~'/download/phar/deplink.phar') }}"> Download phar </a>
+                    <a class="mts mlx mrx button" href="{{ url(app.docker.url) }}"> Docker Image <span class="font-tiny icon-external-link"></span></a>
+                </div>
+                <p class="mts font-tiny"> Last updated at 25/11/2017 - <a href="https://opensource.org/licenses/MIT">MIT License</a></p>
             </div>
         </section>
 
@@ -22,13 +25,25 @@
             <div class="container">
                 <div class="markdown">
                     <h1> Installation Instructions </h1>
-                    <p> Instructions to run Deplink CLI from phar on Windows, Linux and Mac: </p>
-                    <ol>
-                        <li> Install PHP in version 5.6 or greater (version 7.x is also supported)</li>
-                        <li> Add PHP to your PATH environment variable </li>
-                        <li> Download Deplink archive (<a href="{{ url('download/phar/deplink.phar') }}">click to get latest version</a> or build from <a href="{{ url(app.github.url + '/deplink') }}">source</a>) </li>
-                        <li> Run Deplink using <code>php deplink.phar help</code> command</li>
-                    </ol>
+
+                    <article class="mtl">
+                        <h2> Call commands through Docker Container: </h2>
+
+                        <p> This method uses containers with pre-installed Deplink CLI to execute commands in your local filesystem. Each command creates container which is immediately removed after executing the command. </p>
+
+                        <p> Below command will execute the <a href="{{ url('/documentation/reference/init') }}"><span style="color: red;">init</span></a> command inside <span style="color: red;">/your/local/path</span> directory. </p>
+                        <pre><code>docker run --rm -v <span style="color: red;">/your/local/path</span>:/root/workspace deplink/deplink deplink <span style="color: red;">init</span></code></pre>
+                    </article>
+
+                    <article class="mtl">
+                        <h2> Manual installation using phar archive: </h2>
+                        <ol>
+                            <li> Install PHP in version 5.6 or greater (version 7.x is also supported)</li>
+                            <li> Add PHP to your PATH environment variable </li>
+                            <li> Download Deplink archive (<a href="{{ url(app.cdn.url ~'/download/phar/deplink.phar') }}">click to get latest version</a> or build from <a href="{{ url(app.github.url + '/deplink') }}">source</a>) </li>
+                            <li> Run Deplink using <code>php deplink.phar help</code> command</li>
+                        </ol>
+                    </article>
                 </div>
             </div>
         </section>

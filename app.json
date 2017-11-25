@@ -2,15 +2,9 @@
     "host": "https://deplink.org/",
     "author": "Wojciech Mleczek",
 
-    "github": {
-        "url": "https://github.com/deplink"
-    },
-
-    "blog": {
-        "url": "https://medium.com/deplink"
-    },
-
-    "repo": {
-        "url": "https://repo.deplink.org"
-    }
+    "github": {"url": "https://github.com/deplink"},
+    "blog": {"url": "https://medium.com/deplink"},
+    "repo": {"url": "https://repo.deplink.org"},
+    "cdn": {"url": "https://cdn.deplink.org"},
+    "docker": {"url": "https://hub.docker.com/r/deplink/deplink"}
 }

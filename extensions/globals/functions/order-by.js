@@ -14,8 +14,8 @@ module.exports = function (env) {
             }
 
             var key = ab_keys.shift();
-            var kA = a[key] || 0;
-            var kB = b[key] || 0;
+            var kA = a[key] || Number.MAX_SAFE_INTEGER;
+            var kB = b[key] || Number.MAX_SAFE_INTEGER;
 
             return kA < kB ? -1 : (kA > kB ? 1 : cmp(a, b, ab_keys));
         }

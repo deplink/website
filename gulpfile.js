@@ -13,11 +13,12 @@ var nunjucksMd = require('gulp-nunjucks-md');
 var frontmatter = require('frontmatter');
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
+var normalizeUrl = require('normalize-url');
 var markdownToJSON = require('gulp-markdown-to-json');
 
 var config = require(__dirname + '/app.json');
 if (process.argv.indexOf("--local") >= 0) {
-    // If running the "watch" task then change host to the "/"
+    // If running the "watch" task then change host to the dev one
     // (without this generated urls are incompatible with browsersync).
     config.host = 'localhost:3000';
 }
@@ -84,7 +85,9 @@ gulp.task('indexes', function () {
         // Append url associated with the markdown to the output data
         // (unify directory separator and remove .md extension).
         data.uri = relativePath.replace(/[\\/]/g, '/').slice(0, -3);
-        data.url = data.uri === 'index' ? config.host : config.host + data.uri;
+        data.url = data.uri === 'index'
+            ? normalizeUrl(config.host)
+            : normalizeUrl(config.host +'/'+ data.uri);
 
         return data;
     };
