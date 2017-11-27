@@ -108,3 +108,13 @@
         display: block;
     }
 }
+
+// Support for anchor links
+// (navbar won't overlap content).
+*[id]:before {
+    content: " ";
+    display: block;
+    height: ($navbar-height + $md-gap);
+    margin-top: -($navbar-height + $md-gap);
+    visibility: hidden;
+}

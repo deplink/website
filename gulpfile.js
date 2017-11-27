@@ -10,6 +10,7 @@ var imagemin = require('gulp-imagemin');
 var cleanCSS = require('gulp-clean-css');
 var browserify = require('gulp-browserify');
 var nunjucksMd = require('gulp-nunjucks-md');
+var markdownToC = require('gulp-markdown-toc');
 var frontmatter = require('frontmatter');
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
@@ -114,6 +115,7 @@ gulp.task('content', function () {
     };
 
     return gulp.src('content/**/*.md')
+        .pipe(markdownToC())
         .pipe(nunjucksMd({
             path: 'template/views',
             manageEnv: manageEnvironment,

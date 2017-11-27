@@ -21,6 +21,17 @@
     @extend .code;
 }
 
+.markdown hr {
+    height: 1px;
+    border: none;
+    background: $gray;
+}
+
+.markdown hr,
+.markdown hr + * {
+    margin-top: $md-gap;
+}
+
 .markdown {
     ul, ol, p {
         code {

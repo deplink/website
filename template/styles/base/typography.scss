@@ -46,3 +46,17 @@ h2, .font-header {
 .text-center {
     text-align: center;
 }
+
+// The :before is reserved
+// for anchor links support.
+[id] {
+    .anchor {
+        padding: $xs-gap (1.5*$xs-gap);
+        color: transparent;
+        transition: color 0.3s;
+
+        &:hover {
+            color: $second;
+        }
+    }
+}
