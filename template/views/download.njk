@@ -31,7 +31,7 @@
 
                         <p> This method uses containers with pre-installed Deplink CLI to execute commands in your local filesystem. Each command creates container which is immediately removed after executing the command. </p>
 
-                        <p> Below command will execute the <a href="{{ url('/documentation/reference/init') }}"><span style="color: red;">init</span></a> command inside <span style="color: red;">/your/local/path</span> directory. </p>
+                        <p> Below command will execute the <a href="{{ url('docs/reference/init') }}"><span style="color: red;">init</span></a> command inside <span style="color: red;">/your/local/path</span> directory. </p>
                         <pre><code>docker run --rm -v <span style="color: red;">/your/local/path</span>:/root/workspace deplink/deplink deplink <span style="color: red;">init</span></code></pre>
                     </article>
 

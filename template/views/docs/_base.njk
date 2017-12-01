@@ -5,7 +5,7 @@
     {% call navbar.render() %}
     <hr class="navbar-mobile-line mtm">
     <ul class="menu -dark">
-        {% for group, articles in groupBy('menuGroup', documentationPages) %}
+        {% for group, articles in groupBy('menuGroup', docsPages) %}
             <li class="mtm menu-header">{{ group }}</li>
             {% for article in articles %}
                 <li class="menu-item">
@@ -21,7 +21,7 @@
     <div class="wiki">
         <aside class="wiki-menu">
             <ul class="menu mts mbl">
-                {% for group, articles in groupBy('menuGroup', documentationPages) %}
+                {% for group, articles in groupBy('menuGroup', docsPages) %}
                     <li class="mtm menu-group">{{ group }}</li>
                     {% for article in articles %}
                         <li class="menu-item">
@@ -41,6 +41,20 @@
                 </div>
 
                 <div class="markdown mtm">
+                    {% if toc.json|length > 0 %}
+                        <div class="toc">
+                            <ul>
+                                {% for hr in toc.json %}
+                                    {% if hr.lvl == 2 %}
+                                        <li><a href="#{{ hr.slug }}">{{ hr.content }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <hr>
+                    {% endif %}
+
                     {% block markdown %}{% endblock %}
                 </div>
 

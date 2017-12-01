@@ -49,8 +49,8 @@ Frontmatter options:
 
 - `layout` - specify layout path relative to the `template/views` directory (without .njk extension)
 - `title` - page meta title (in some layouts could be displayed at the top of the page)
-- `menuTitle` - used with `documentation/quide` or `documentation/reference` layout to set link text in the menu (left pane)
-- `menuGroup` - used with `documentation/quide` or `documentation/reference` layout to group links in the menu (left pane)
+- `menuTitle` - used with `docs/quide` or `docs/reference` layout to set link text in the menu (left pane)
+- `menuGroup` - used with `docs/quide` or `docs/reference` layout to group links in the menu (left pane)
 - `description` - page meta description
 - `exclude` - set any value to remove page from search results in Quick Access
 - `shortcut` - set text which can be used to find page in Quick Access (should contians only alphanum and dash symbols)

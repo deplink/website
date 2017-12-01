@@ -1,5 +1,5 @@
 ---
-layout: documentation/guide
+layout: docs/guide
 title: Getting Started
 description: ...
 menuGroup: Basic

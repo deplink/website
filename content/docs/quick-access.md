@@ -1,5 +1,5 @@
 ---
-layout: documentation/quick-access
+layout: docs/quick-access
 title: Quick Access Manual
 description: Quick Access is a search engine to easy navigate between pages on Deplink website. Here you can learn how it works and see the shortcuts which could be helpful for you.
 shortcut: help

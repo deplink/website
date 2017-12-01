@@ -16,6 +16,7 @@ var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
 var normalizeUrl = require('normalize-url');
 var markdownToJSON = require('gulp-markdown-to-json');
+var through = require('through2');
 
 var config = require(__dirname + '/app.json');
 if (process.argv.indexOf("--local") >= 0) {
@@ -116,6 +117,12 @@ gulp.task('content', function () {
 
     return gulp.src('content/**/*.md')
         .pipe(markdownToC())
+        .pipe(through.obj(function (file, enc, cb) {
+            // Forward table of contents to the views
+            // (nunjucksMd plugin merge file.data object).
+            file.data = {toc: file.toc};
+            cb(null, file);
+        }))
         .pipe(nunjucksMd({
             path: 'template/views',
             manageEnv: manageEnvironment,
