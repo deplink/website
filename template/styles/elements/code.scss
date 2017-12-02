@@ -3,7 +3,7 @@
     background: $gray;
     font-family: $font-family-code;
     font-size: $font-size-small;
-    padding: $sm-gap $md-gap;
+    padding: $sm-gap (1.5 * $sm-gap);
     border-radius: 4px;
     white-space: pre;
 

@@ -8,11 +8,13 @@
 
     .menu {
         font-size: $font-size-small;
+        padding: 0 $sm-gap;
     }
 }
 
 .footer-logo {
     display: block;
+    padding: 0 $sm-gap;
     transition: transform 0.4s;
 
     &:hover, &:focus {
@@ -28,6 +30,7 @@
 
 .footer-credits {
     font-size: $font-size-tiny;
+    padding: 0 $sm-gap;
     opacity: 0.6;
 
     a {

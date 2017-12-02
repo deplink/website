@@ -35,10 +35,9 @@ $quick-access-menu-offset: $quick-access-field-offset + $quick-access-field-heig
     box-shadow: 0 1px 3px rgba(black, 0.6);
     max-height: calc(100% - #{$quick-access-menu-offset + $sm-gap});
 
-    flex: 1 1 auto;
+    flex: auto 1 1;
     overflow-y: auto;
     background: white;
-    // TODO: Style scrollbar
 }
 
 .quick-access-menu,

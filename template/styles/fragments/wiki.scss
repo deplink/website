@@ -10,13 +10,25 @@
     @include lt(lg) {
         display: none;
     }
+
+    .menu {
+        padding-left: $sm-gap;
+        padding-right: $sm-gap;
+    }
 }
 
 .wiki-body {
     @extend .xs-9;
     @extend .bg-white;
-    @include gte(lg) {
-        padding-left: $lg-gap;
+
+
+    .section {
+        padding-left: $sm-gap;
+        padding-right: $sm-gap;
+
+        @include gte(lg) {
+            padding-left: $lg-gap;
+        }
     }
 
     @include lt(lg) {

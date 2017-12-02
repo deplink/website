@@ -5,6 +5,8 @@
 }
 
 .navbar-branding {
+    padding: 0 $sm-gap;
+
     @include media(null, $navbar-breakpoint - 1px) {
         text-align: center;
     }
@@ -95,6 +97,10 @@
     background: white;
     height: 2px;
     opacity: 0.2;
+}
+
+.navbar-desktop {
+    padding: 0 $sm-gap;
 }
 
 @include media(null, $navbar-breakpoint - 1px) {
