@@ -7,7 +7,7 @@
 }
 
 .markdown {
-    ul, ol, p, pre {
+    ul, ol, p, pre, table {
         margin-top: $sm-gap;
     }
 }
@@ -37,5 +37,21 @@
         code {
             @extend .-inline;
         }
+    }
+}
+
+.markdown table {
+    border-collapse: collapse;
+    font-size: $font-size-small;
+
+    th {
+        background: $gray;
+        font-weight: $font-weight-highlight;
+        text-align: left;
+    }
+
+    th, td {
+        border: 1px solid $gray;
+        padding: $xs-gap $sm-gap;
     }
 }

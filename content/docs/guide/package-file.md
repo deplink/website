@@ -1,7 +1,7 @@
 ---
 layout: docs/guide
 title: Package File
-description: The deplink.json schema. Explanation of the fields available in the package file.
+description: The deplink.json schema is the most important file in the whole package. Each field of this file describes how the package should be builded or interact with other packages.
 menuGroup: Basic
 order: 2
 ---
@@ -75,7 +75,7 @@ Multiple source directories are allowed:
 compiler
 --------
 
-Inform which compilers (as well as versions) are supported. Version must follow [version constraints](/docs/guide/version-constraints) conventions. Currently only GCC is supported.
+Inform which compilers (as well as versions) are supported. Version must follow [version constraints](/docs/guide/constraints#version-constraints) conventions. Currently only GCC is supported.
 
 ```
 "compilers": {
@@ -101,7 +101,7 @@ Determine the library linking type, used only along with library type. **Set to 
 dependencies
 ------------
 
-Define dependencies required to build and/or run the application. Dependencies can be added manually or via the [install](/docs/reference/install) command. Version must follow [version constraints](/docs/guide/version-constraints) conventions and can contain additional constraint after the `:` symbol to set preferred linking type (available only for dependencies which support both linking types).
+Define dependencies required to build and/or run the application. Dependencies can be added manually or via the [install](/docs/reference/install) command. Version must follow [constraints](/docs/guide/constraints) conventions and can contain additional constraint after the `:` symbol to set preferred linking type (available only for dependencies which support both linking types).
 
 ```json
 "dependencies": {
