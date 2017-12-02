@@ -101,21 +101,63 @@ Determine the library linking type, used only along with library type. **Set to 
 dependencies
 ------------
 
-...
+Define dependencies required to build and/or run the application. Dependencies can be added manually or via the [install](/docs/reference/install) command. Version must follow [version constraints](/docs/guide/version-constraints) conventions and can contain additional constraint after the `:` symbol to set preferred linking type (available only for dependencies which support both linking types).
 
+```json
+"dependencies": {
+    "org/package": "^3.0:static",
+    "deplink/example": "^0.5.6"
+}
+```
 
 dev-dependencies
 ----------------
 
-Additional dependencies installed only for root package in dev environment. See [dependencies](#dependencies) section for more information.
+Additional dependencies installed only for root package in dev environment.
+
+```json
+"dev-dependencies": {
+    "unit/tests": "^1.3"
+}
+```
+
+See [dependencies](#dependencies) section for more information.
 
 define
 ------
 
-...
+Macro definitions can be defined not only in the code, but also inside the package file separately for debug and release mode.
 
+```json
+"define": {
+    "debug": {
+        "LOG_ENABLED": true,
+        "LOG_LEVEL": "Warnings"
+    },
+    "release": {
+        "LOG_ENABLED": false
+    }
+}
+```
+
+**Important:** Behavior of this field could change in future due to currently unresolved issue of macro naming conflicts. Probably macros defined in code will be prepended with unique hash and only macros defined inside the package file will be visible for other packages.
 
 repositories
 ------------
 
-...
+Describe in which repositories package will be looking for dependencies. If dependency exists in a few of the defined repositories then the first one will be used. It means that the **order of repositories is important**.
+
+These repositories will be used also for installing nested dependencies. If any of your dependencies use custom repository to install other dependencies then we have to include this repository also in the root package, otherwise installation will fail because dependency won't be finded.
+
+```json
+"repositories": [
+    {
+        "type": "local",
+        "src": "/path/to/repo"
+    }
+]
+```
+
+See [list of available repositories](/docs/guide/repositories) for more information.
+
+**Note:** In most cases you won't need to define this property, because [Official Online Repository](https://repo.deplink.org) will be used as a fallback repository. Fallback repository is used when the dependency not exists in any of the defined repositories.
