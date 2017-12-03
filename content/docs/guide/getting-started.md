@@ -10,8 +10,8 @@ Main features
 --------
 
 - **Ease of use** - installation and creating a first project is a breeze.
-- **Driven by community** - project as well as libraries are created by community, everyone can support the project for free.
-- **Focus on security** - with private repository all your private data will remain inside your infrastructure.
+- **Focus on security** - with private repository all your private data will remain inside your infrastructure. Everything can be available only within your private network.
+- **Driven by community** - project as well as libraries are created by community, everyone can support the project and add new libraries.
 - **Open Source** - the tool will always be Open Source and available for free, only on the site may appears advertisements from sponsors.
 
 Installation

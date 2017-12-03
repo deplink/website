@@ -2,8 +2,8 @@
 layout: docs/guide
 title: Constraints
 description: Constraints are a set of rules to define which version should be used along with additional constraints. It's highly important to use correct constraint to narrowing possible case of use to supported ones.
-menuGroup: Advanced
-order: 500
+menuGroup: Basic
+order: 5
 ---
 
 Version constraints

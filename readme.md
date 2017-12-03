@@ -26,7 +26,8 @@ Each markdown file is associated with unique url which is resolved from file pat
 Markdown files placed in the `content` directory have following processing workflow (files are processed in random order):
 
 1. **Extract front matter from markdown**, extracted data will be available in layout under the `page` variable, e.g. `{{ page.title }}`),
-1. **Transform markdown to HTML**, use `{% block markdown %}{% endblock %}` to insert HTML in layout),
+1. **Generate Table of Contents** which can be accessed in view via `toc` variable,
+1. **Transform markdown to HTML**, use `{% block markdown %}{% endblock %}` to insert HTML in layout,
 1. **Attach `app.json` data**, file object will be bind in layout to the `app` variable (example usage: `{{ app.host }}`),
 1. **Mount extensions** defined in the `extensions` directory (see `extensions/readme.md` file for more details),
 1. **Render view** specified in the front matter (the `layout` variable),
@@ -49,9 +50,10 @@ Frontmatter options:
 
 - `layout` - specify layout path relative to the `template/views` directory (without .njk extension)
 - `title` - page meta title (in some layouts could be displayed at the top of the page)
+- `description` - page meta description
 - `menuTitle` - used with `docs/quide` or `docs/reference` layout to set link text in the menu (left pane)
 - `menuGroup` - used with `docs/quide` or `docs/reference` layout to group links in the menu (left pane)
-- `description` - page meta description
+- `order` - used with `docs/quide` or `docs/reference` layout to set the order of articles (left pane)
 - `exclude` - set any value to remove page from search results in Quick Access
 - `shortcut` - set text which can be used to find page in Quick Access (should contians only alphanum and dash symbols)
 
