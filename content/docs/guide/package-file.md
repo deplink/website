@@ -15,8 +15,6 @@ Package name in format `<org>/<package>` (e.g. "deplink/example"). Both *org* an
 "name": "org/package"
 ```
 
-**Note:** The field is considered redundant and may be removed in the future.
-
 type
 ----
 
@@ -40,8 +38,6 @@ Package version in [Semantic Versioning 2.0](https://semver.org) notation.
 ```json
 "version": "2.0.7"
 ```
-
-**Note:** The field is considered redundant and may be removed in the future.
 
 
 include
@@ -95,8 +91,6 @@ Determine the library linking type, used only along with library type. **Set to 
 "linking": "dynamic"
 "linking": ["static", "dynamic"]
 ```
-
-**Note:** In future order of array items could have an impact for algorithm and first linking type could be used in case if user not defined strictly which one would like to use.
 
 dependencies
 ------------
