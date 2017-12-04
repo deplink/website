@@ -5,6 +5,7 @@
             .#{$prefix}-#{$i} {
                 width: ($i / $flex-columns) * 100%;
                 flex-basis: ($i / $flex-columns) * 100%;
+                max-width: ($i / $flex-columns) * 100%;
             }
 
             // xs-push-3, md-push-10, ...

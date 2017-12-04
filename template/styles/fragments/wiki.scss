@@ -10,29 +10,18 @@
     @include lt(lg) {
         display: none;
     }
-
-    .menu {
-        padding-left: $sm-gap;
-        padding-right: $sm-gap;
-    }
 }
 
 .wiki-body {
     @extend .xs-9;
     @extend .bg-white;
-
-
-    .section {
-        padding-left: $sm-gap;
-        padding-right: $sm-gap;
-
-        @include gte(lg) {
-            padding-left: $lg-gap;
-        }
+    @include gte(lg) {
+        padding-left: $lg-gap;
     }
 
     @include lt(lg) {
         width: 100%;
         flex-basis: 100%;
+        max-width: 100%;
     }
 }
