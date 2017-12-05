@@ -16,9 +16,9 @@ install:
 script:
   - npm run prod
 
-deploy:
-  provider: script
-  skip_cleanup: true
-  script: deploy.sh
-  on:
-    branch: master
+  # Register Travis CI key
+  - eval "$(ssh-agent -s)"
+  - ssh-add - <<< "${$TRAVIS_KEY}"
+
+  # Upload "build" directory to server
+  - scp -r build/* travis@deplink.org:~/
