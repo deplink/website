@@ -18,7 +18,7 @@ script:
 
   # Register Travis CI key
   - eval "$(ssh-agent -s)"
-  - ssh-add - <<< "${$TRAVIS_KEY}"
+  - ssh-add - <<< "${TRAVIS_KEY}"
 
   # Upload "build" directory to server
   - scp -r build/* travis@deplink.org:~/
