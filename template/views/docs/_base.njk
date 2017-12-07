@@ -19,7 +19,7 @@
 
 {% block content %}
     <div class="wiki">
-        <aside class="wiki-menu">
+        <nav class="wiki-menu">
             <ul class="menu mts mbl">
                 {% for group, articles in groupBy('menuGroup', docsPages) %}
                     <li class="mtm menu-group">{{ group }}</li>
@@ -30,7 +30,7 @@
                     {% endfor %}
                 {% endfor %}
             </ul>
-        </aside>
+        </nav>
         <article class="wiki-body">
             <div class="section">
                 <h1>{{ page.title }}</h1>
@@ -42,7 +42,7 @@
 
                 <div class="markdown mtm">
                     {% if toc.json|length > 0 %}
-                        <div class="toc">
+                        <nav class="toc">
                             <ul>
                                 {% for hr in toc.json %}
                                     {% if hr.lvl == 2 %}
@@ -50,7 +50,7 @@
                                     {% endif %}
                                 {% endfor %}
                             </ul>
-                        </div>
+                        </nav>
 
                         <hr>
                     {% endif %}
