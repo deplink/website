@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://deplink.org"><img src="https://deplink.org/images/github.png" alt="Deplink Website Screenshot" width="300"></a>
+  <a href="https://deplink.org"><img src="https://deplink.org/images/github.png" alt="Deplink Website Screenshot" width="600"></a>
   <br>
   <a href="https://travis-ci.org/deplink/website"><img src="https://travis-ci.org/deplink/website.svg?branch=master" alt="Travis CI Build Status"></a>
 </p>

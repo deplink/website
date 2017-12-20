@@ -38,13 +38,13 @@ After the `:` symbol you can place additional constraints. These constraints are
 
 | Context | Group | Constraint | Description |
 |---------|-------|------------|-------------|
-| Dependency | - | **static** | Force to use static linking type. |
-| Dependency | - | **dynamic** | Force to use dynamic linking type. |
-| Script | Platform | **windows** | Execute script only when building package for Windows. It's equal to building package on Windows. |
-| Script | Platform | **linux** | Execute script only when building package for Linux. It's equal to building package on Linux. |
-| Script | Platform | **mac** | Execute script only when building package for Mac. It's equal to building package on Mac. |
-| Script | CPU | **x86** | Execute script only when building package for x86 architecture. Often confused with the architecture on which the script is running. |
-| Script | CPU | **x64** | Execute script only when building package for x64 architecture. Often confused with the architecture on which the script is running. |
+| Package | - | **static** | Force to use static linking type. |
+| Package | - | **dynamic** | Force to use dynamic linking type. |
+| Build | Platform | **windows** | Execute script only when building package for Windows. It's equal to building package on Windows. |
+| Build | Platform | **linux** | Execute script only when building package for Linux. It's equal to building package on Linux. |
+| Build | Platform | **mac** | Execute script only when building package for Mac. It's equal to building package on Mac. |
+| Build | CPU | **x86** | Execute script only when building package for x86 architecture. Often confused with the architecture on which the script is running. |
+| Build | CPU | **x64** | Execute script only when building package for x64 architecture. Often confused with the architecture on which the script is running. |
 
 **Examples:**
 

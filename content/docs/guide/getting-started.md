@@ -1,7 +1,7 @@
 ---
 layout: docs/guide
 title: Getting Started
-description: Deplink is a console application to automate process of downloading, building and linking dependencies in C/C++ projects. Deplink allows you to create your own packages which you can share within the company or make it public.
+description: Deplink is a console application to automate process of downloading, building and linking dependencies in C/C++ projects. Deplink allows you to create your own packages which you can share within the company or with the whole community.
 menuGroup: Basic
 order: 1
 ---

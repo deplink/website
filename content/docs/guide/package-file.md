@@ -107,7 +107,7 @@ Define dependencies required to build and/or run the application. Dependencies c
 dev-dependencies
 ----------------
 
-Additional dependencies installed only for root package in dev environment.
+Development dependencies are installed only for the root package and can be omitted using [--no-dev option](/docs/reference/install#options). Use them only for packages which aren't required for the proper functioning of the project.
 
 ```json
 "dev-dependencies": {
@@ -155,3 +155,16 @@ These repositories will be used also for installing nested dependencies. If any 
 See [list of available repositories](/docs/guide/repositories) for more information.
 
 **Note:** In most cases you won't need to define this property, because [Official Online Repository](https://repo.deplink.org) will be used as a fallback repository. Fallback repository is used when the dependency not exists in any of the defined repositories.
+
+config
+------
+
+Overwrite default compiler options:
+
+```json
+"config": {
+    "compiler": {
+        "gcc:linux": "-fPIC"
+    }
+}
+```
