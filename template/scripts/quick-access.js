@@ -45,13 +45,13 @@ module.exports = function () {
     var quickAccessMenu = quickAccess.find('.quick-access-menu');
 
     function init() {
-        $.getJSON('/compiled/indexes.json', function(json) {
+        $.getJSON('/compiled/indexes.json', function (json) {
             var indexes = [];
-            for(key in json) {
+            for (key in json) {
                 indexes.push(json[key]);
             }
 
-            for(key in window.app.indexes) {
+            for (key in window.app.indexes) {
                 indexes.push(window.app.indexes[key]);
             }
 
@@ -108,27 +108,33 @@ module.exports = function () {
         // Remove previous search results
         quickAccessMenu.find('.quick-access-menu-item').remove();
 
-        $.each(items, function(i, item) {
+        $.each(items, function (i, item) {
             var matches = item['matches'] || [];
             var data = item['item'] || item;
 
             var html = {
                 title: data.title || '',
                 description: data.description || '',
-                url: data.url || ''
+                url: data.url || '',
+                external: data.external || false
             };
 
-            $.each(matches, function(i, match) {
-                if(html[match.key] !== undefined) {
+            $.each(matches, function (i, match) {
+                if (html[match.key] !== undefined) {
                     html[match.key] = boldMatches(html[match.key], match.indices);
                 }
             });
 
+            var externalIcon = '';
+            if ([true, 'true', '1'].indexOf(html.external) >= 0) {
+                externalIcon = ' <span class="font-tiny icon-external-link"></span>';
+            }
+
             var menuItem = $(
                 '<div class="quick-access-menu-item" data-url="' + data.url + '">' +
-                '   <p>'+ html.title +'</p>' +
-                '   <small>'+ html.description +'</small>' +
-                '   <small>'+ html.url +'</small>' +
+                '   <p>' + html.title + externalIcon + '</p>' +
+                '   <small>' + html.description + '</small>' +
+                '   <small>' + html.url + '</small>' +
                 '</div>'
             );
 
@@ -139,14 +145,14 @@ module.exports = function () {
 
     function insertStrToStrAt(str, text, index) {
         text = text.split('');
-        text.splice(index , 0, str);
+        text.splice(index, 0, str);
         return text.join('');
     }
 
     function boldMatches(str, indices) {
         indices = indices.reverse();
 
-        $.each(indices, function(i, index) {
+        $.each(indices, function (i, index) {
             str = insertStrToStrAt('</b>', str, index[1] + 1);
             str = insertStrToStrAt('<b>', str, index[0]);
         });
@@ -166,14 +172,14 @@ module.exports = function () {
         var q = quickAccessField.val();
 
         // Empty value, stop searching
-        if(q.length <= 0) {
+        if (q.length <= 0) {
             setItems([]);
             userSelection = false;
             return hideLoader();
         }
 
         showLoader();
-        if(fuse === null) {
+        if (fuse === null) {
             // Stop searching because indexes was not found
             // (still show loader, results will show after indexing).
             return;
@@ -191,7 +197,7 @@ module.exports = function () {
         var items = quickAccessMenu.find('.quick-access-menu-item');
 
         var item = items.filter('.-selected');
-        if(item.length >= 1) {
+        if (item.length >= 1) {
             return item.first();
         }
 
@@ -200,7 +206,7 @@ module.exports = function () {
 
     function setFocusedItemByUrl(url) {
         var items = quickAccessMenu.find('.quick-access-menu-item');
-        var item = items.filter('[data-url="'+ url +'"]');
+        var item = items.filter('[data-url="' + url + '"]');
 
         items.removeClass('-selected');
         item.addClass('-selected');
@@ -210,29 +216,29 @@ module.exports = function () {
     function scrollToItem(item) {
         var offset = 0;
         var prevItems = $(item).prevAll('.quick-access-menu-item');
-        $.each(prevItems, function(i, prevItem) {
+        $.each(prevItems, function (i, prevItem) {
             offset += $(prevItem).outerHeight();
         });
 
         // Scroll down only if bottom part of the element is not visible
         var bottomSpace = quickAccessMenu.scrollTop() + quickAccessMenu.height() - offset - item.outerHeight();
-        if(bottomSpace < 0) {
+        if (bottomSpace < 0) {
             var scroll = quickAccessMenu.scrollTop() - bottomSpace;
-            quickAccessMenu.animate({ scrollTop: scroll + 'px' }, animTime/4);
+            quickAccessMenu.animate({ scrollTop: scroll + 'px' }, animTime / 4);
         }
 
         // Scroll up only if top part of the element is not visible
         var topSpace = offset - quickAccessMenu.scrollTop();
-        if(topSpace < 0) {
+        if (topSpace < 0) {
             var scroll = quickAccessMenu.scrollTop() + topSpace;
-            quickAccessMenu.animate({ scrollTop: scroll + 'px' }, animTime/4);
+            quickAccessMenu.animate({ scrollTop: scroll + 'px' }, animTime / 4);
         }
     }
 
     function focusNextItem(item) {
         var nextItem = item.next('.quick-access-menu-item');
 
-        if(nextItem.length <= 0) {
+        if (nextItem.length <= 0) {
             var items = quickAccessMenu.find('.quick-access-menu-item');
             nextItem = items.first();
         }
@@ -244,7 +250,7 @@ module.exports = function () {
     function focusPrevItem(item) {
         var prevItem = item.prev('.quick-access-menu-item');
 
-        if(prevItem.length <= 0) {
+        if (prevItem.length <= 0) {
             var items = quickAccessMenu.find('.quick-access-menu-item');
             prevItem = items.last();
         }
@@ -256,20 +262,20 @@ module.exports = function () {
     function onFieldKeyDown(e) {
         var key = e.which || e.key;
 
-        if(key === keys.arrows.down) {
+        if (key === keys.arrows.down) {
             userSelection = true;
             var item = getFocusedItemOrFocus(-1);
             focusNextItem(item);
         }
 
-        if(key === keys.arrows.up) {
+        if (key === keys.arrows.up) {
             e.preventDefault();
             userSelection = true;
             var item = getFocusedItemOrFocus(0);
             focusPrevItem(item);
         }
 
-        if(key === keys.enter) {
+        if (key === keys.enter) {
             var item = getFocusedItemOrFocus(0);
             item.click();
         }
@@ -281,7 +287,7 @@ module.exports = function () {
 
         search();
 
-        if(!userSelection) {
+        if (!userSelection) {
             focused = quickAccessMenu.find('.quick-access-menu-item').first();
         }
 
@@ -302,7 +308,7 @@ module.exports = function () {
 
     function onClick(e) {
         var clickedToggleButton = $(e.target).closest('.navbar-quick-access').length > 0;
-        if(clickedToggleButton) {
+        if (clickedToggleButton) {
             toggle();
             return false;
         }

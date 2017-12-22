@@ -4,23 +4,27 @@
         github: {
             title: "GitHub Profile",
             url: "{{ app.github.url }}",
-            shortcut: "github"
+            shortcut: "github",
+            external: true
         },
         blog: {
             title: "Blog on Medium",
             url: "{{ app.blog.url }}",
-            shortcut: "blog"
+            shortcut: "blog",
+            external: true
         },
         repo: {
             title: "Online Repository",
             url: "{{ app.repo.url }}",
             description: "Official Deplink Repository is the place where you can search libraries and download them. All of these libraries are free to use and public available for everyone.",
-            shortcut: "repo"
+            shortcut: "repo",
+            external: true
         },
         license: {
             title: "License",
             url: "{{ app.github.url }}/deplink/blob/master/license",
-            description: "Code licensed under the MIT License and the docs are licensed under the CC BY 3.0."
+            description: "Code licensed under the MIT License and the docs are licensed under the CC BY 3.0.",
+            external: true
         }
     }
 </script>
