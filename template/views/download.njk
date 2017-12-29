@@ -14,10 +14,13 @@
                 <h1> Download </h1>
                 <p class="mtm"> Use below button to download latest version of cross-platform Deplink CLI. Currently Deplink is under development and only <b>bleeding-edge builds</b> are available. <strong>Deplink is free and always will be available for free</strong>. </p>
                 <nav class="mtm">
-                    <a class="mts mlx mrx button" href="{{ url(app.cdn.url ~'/download/phar/deplink.phar') }}"> Download phar </a>
+                    <a class="mts mlx mrx button" href="{{ url(app.cdn.url ~'/download/windows/deplink-latest.exe') }}"> Windows </a>
                     <a class="mts mlx mrx button" href="{{ url(app.docker.url) }}"> Docker Image <span class="font-tiny icon-external-link"></span></a>
                 </nav>
-                <p class="mts font-tiny"> Bleeding-edge build - <a href="https://opensource.org/licenses/MIT">MIT License</a></p>
+                <p class="mts font-tiny">
+                    <a class="plx prx ptx pbx" href="{{ url(app.cdn.url ~'/download/') }}"> Release archive </a> &middot;
+                    <a class="plx prx ptx pbx"  href="https://opensource.org/licenses/MIT">MIT License</a>
+                </p>
             </div>
         </section>
 
@@ -25,22 +28,35 @@
             <div class="container">
                 <div class="markdown">
                     <h1> Installation Instructions </h1>
+                    <p>
+                        <span class="mrx"> Go to instruction: </span>
+                        <a class="ptx pbx" href="#windows"> Windows </a> <span class="mlx mrx">&middot;</span>
+                        <a class="ptx pbx" href="#docker"> Docker </a> <span class="mlx mrx">&middot;</span>
+                        <a class="ptx pbx" href="#manual"> Manual </a>
+                    </p>
 
                     <article class="mtl">
-                        <h2> Call commands through Docker Container: </h2>
+                        <h2 id="windows"> Automated installation on Windows: </h2>
+                        <ol>
+                            <li> Download <a href="{{ url(app.cdn.url ~'/download/windows/deplink-latest.exe') }}"> Windows Installer </a></li>
+                            <li> Open installer and follow instructions </li>
+                            <li> Run Deplink using <code>deplink help</code> command</li>
+                        </ol>
+                    </article>
 
+                    <article class="mtl">
+                        <h2 id="docker"> Call commands through Docker Container: </h2>
                         <p> This method uses containers with pre-installed Deplink CLI to execute commands in your local filesystem. Each command creates container which is immediately removed after executing the command. </p>
-
                         <p> Below command will execute the <a href="{{ url('docs/reference/init') }}"><span style="color: red;">init</span></a> command inside <span style="color: red;">/your/local/path</span> directory. </p>
                         <pre><code>docker run --rm -v <span style="color: red;">/your/local/path</span>:/root/workspace deplink/deplink deplink <span style="color: red;">init</span></code></pre>
                     </article>
 
                     <article class="mtl">
-                        <h2> Manual installation using phar archive: </h2>
+                        <h2 id="manual"> Manual installation using phar archive: </h2>
                         <ol>
                             <li> Install PHP in version 5.6 or greater (version 7.x is also supported)</li>
                             <li> Add PHP to your PATH environment variable </li>
-                            <li> Download Deplink archive (<a href="{{ url(app.cdn.url ~'/download/phar/deplink.phar') }}">click to get latest version</a> or build from <a href="{{ url(app.github.url + '/deplink') }}">source</a>) </li>
+                            <li> Download Deplink archive (<a href="{{ url(app.cdn.url ~'/download/phar/deplink-latest.phar') }}">click to get latest version</a> or build from <a href="{{ url(app.github.url + '/deplink') }}">source</a>) </li>
                             <li> Run Deplink using <code>php deplink.phar help</code> command</li>
                         </ol>
                     </article>
