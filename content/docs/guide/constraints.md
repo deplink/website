@@ -34,7 +34,7 @@ Most used operator, it allows to define that we'd like to use version which is c
 Additional constraints
 ----------------------
 
-After the `:` symbol you can place additional constraints. These constraints are available only in specified context and can be connected using `,` operator. Using some constraints from the same group works as using the *"or"* operator inside this group and *"and"* operator between groups (unnamed groups are treated as different).
+After the `:` symbol you can place additional constraints. These constraints are available only in specified **context** and can be connected using `,` operator. If none of constraints from group was applied on the key (e.g. `key:linux,windows`) then engine will assumes that all constraints from missing group was applied (`key:linux,windows,x86,x64`)
 
 | Context | Group | Constraint | Description |
 |---------|-------|------------|-------------|

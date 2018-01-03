@@ -68,8 +68,8 @@ Multiple source directories are allowed:
 
 **Note:** By default *"src"* directory is used.
 
-compiler
---------
+compilers
+---------
 
 Inform which compilers (as well as versions) are supported. Version must follow [version constraints](/docs/guide/constraints#version-constraints) conventions. Currently only GCC is supported.
 
@@ -163,7 +163,7 @@ Overwrite default compiler options:
 
 ```json
 "config": {
-    "compiler": {
+    "compilers": {
         "gcc:linux": "-fPIC"
     }
 }

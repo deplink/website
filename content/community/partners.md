@@ -1,7 +1,7 @@
 ---
 layout: community/partners
 title: Partners
-description: Deplink wall of fame, people who contributed to the project for free or by making donations. Thanks to them the project is still alive and developing.
+description: Deplink wall of fame, people who contributed to the project for free or by making donations. Thanks to them the project is still active developing.
 ---
 
 Contributors
