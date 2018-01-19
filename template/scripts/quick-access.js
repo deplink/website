@@ -133,8 +133,8 @@ module.exports = function () {
             var menuItem = $(
                 '<div class="quick-access-menu-item" data-url="' + data.url + '">' +
                 '   <p>' + html.title + externalIcon + '</p>' +
-                '   <small>' + html.description + '</small>' +
-                '   <small>' + html.url + '</small>' +
+                '   <small class="mtx">' + html.description + '</small>' +
+                '   <small class="mtx">' + html.url + '</small>' +
                 '</div>'
             );
 

@@ -6,6 +6,11 @@ menuGroup: Basic
 order: 1
 ---
 
+Dependencies linker
+-------------------
+
+Did you know that Deplink name is a combination of 2 words? The **dep**endencies and **link**er. Of course Deplink is not only a linker in within the meaning of the c++ tool, the *"link"* word in this case means a whole process from installation to the usage of a specified dependency (downloading, building etc.).
+
 Main features
 --------
 
