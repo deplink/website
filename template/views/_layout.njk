@@ -25,7 +25,7 @@
 <body>
     {% block navbar %}
         {# Defining navbar using block and macro allows
-         # to extend navbar with custom content. #}
+           to extend navbar with custom content. #}
         {% call navbar.render() %}{% endcall %}
     {% endblock %}
 
@@ -33,9 +33,11 @@
         {% block content %}{% endblock %}
     </main>
 
-    {% include '_fragments/footer.njk' %}
-    {% include '_fragments/quick-access/menu.njk' %}
+    {% if includeFooter|default(true) %}
+        {% include '_fragments/footer.njk' %}
+    {% endif %}
 
+    {% include '_fragments/quick-access/menu.njk' %}
     {% block scripts %}
         {% include '_fragments/quick-access/indexes.njk' %}
 

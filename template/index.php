@@ -3,6 +3,10 @@
 $uri = $_SERVER['REQUEST_URI'] !== '/' ? $_SERVER['REQUEST_URI'] : '/index';
 $page = __DIR__ . $uri . '.html';
 
+$exceptUri = [
+    '/errors/404',
+];
+
 // If a PHP file is given on the command line when the web server is started it is treated as a "router" script.
 // The script is run at the start of each HTTP request. If this script returns FALSE, then the requested resource
 // is returned as-is. Otherwise the script's output is returned to the browser.
@@ -22,7 +26,7 @@ if (php_sapi_name() === 'cli-server') {
 // 3. Redirect www to non www (https://www.example.com -> https://example.com)
 // 4. Remove trailing .html (https://example.com/download.html -> https://example.com/download)
 // 5. Redirect all request except existing files (eq. images) to the index.php
-if (file_exists($page)) {
+if (file_exists($page) && !in_array($uri, $exceptUri)) {
     include $page;
 } else {
     http_response_code(404);
