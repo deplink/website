@@ -52,4 +52,8 @@ To build project use `build` command:
 deplink build
 ```
 
-That's all! Your program is available under the `build` directory.
+That's all! Your program is available under the `build` directory. You can run it manually or using the `run` command:
+
+```bash
+deplink run
+```
