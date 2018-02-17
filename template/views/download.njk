@@ -15,7 +15,7 @@
                 <p class="mtm"> Use below button to download latest version of Deplink CLI. Currently Deplink is under development and only <b>bleeding-edge builds</b> are available. <strong>Deplink is free and always will be available for free</strong>. </p>
                 <nav class="mtm">
                     <a class="mts mlx mrx button" href="{{ url(app.cdn.url ~'/download/windows/deplink-latest.exe') }}"> Windows </a>
-                    <a class="mts mlx mrx button" href="{{ url(app.docker.url) }}"> Docker Image <span class="font-tiny icon-external-link"></span></a>
+                    <a class="mts mlx mrx button" href="{{ url(app.cdn.url ~'/download/linux/deplink-latest.deb') }}"> Linux </a>
                 </nav>
                 <p class="mts font-tiny">
                     <a class="plx prx ptx pbx" href="{{ url(app.cdn.url ~'/download/') }}"> Release archive </a> &middot;
@@ -31,6 +31,7 @@
                     <p>
                         <span class="mrx"> Go to instruction: </span>
                         <a class="ptx pbx" href="#windows"> Windows </a> <span class="mlx mrx">&middot;</span>
+                        <a class="ptx pbx" href="#linux"> Linux </a> <span class="mlx mrx">&middot;</span>
                         <a class="ptx pbx" href="#docker"> Docker </a> <span class="mlx mrx">&middot;</span>
                         <a class="ptx pbx" href="#manual"> Manual </a>
                     </p>
@@ -40,7 +41,16 @@
                         <ol>
                             <li> Download <a href="{{ url(app.cdn.url ~'/download/windows/deplink-latest.exe') }}"> Windows Installer </a></li>
                             <li> Open installer and follow instructions </li>
-                            <li> Run Deplink using <code>deplink help</code> command</li>
+                            <li> Run Deplink using <code>deplink</code> command</li>
+                        </ol>
+                    </article>
+
+                    <article class="mtl">
+                        <h2 id="windows"> Install .deb package in Ubuntu: </h2>
+                        <ol>
+                            <li> Download <a href="{{ url(app.cdn.url ~'/download/linux/deplink-latest.deb') }}"> .deb package </a></li>
+                            <li> Open terminal and run <code>sudo apt-get install ./deplink-latest.deb</code></li>
+                            <li> Run Deplink using <code>deplink</code> command</li>
                         </ol>
                     </article>
 
