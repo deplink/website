@@ -1,6 +1,6 @@
 ---
 layout: docs/guide
-title: Multilib
+title: sys/cdefs.h
 description: 'Troubleshooting an error: "In file included from /usr/include/stdio.h:27:0: /usr/include/features.h:374:25: fatal error: sys/cdefs.h: No such file or directory".'
 menuGroup: Troubleshooting
 order: 900
