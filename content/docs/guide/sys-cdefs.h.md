@@ -36,7 +36,7 @@ compilation terminated.
 Solution
 --------
 
-Install missing libraries, either `gcc-multilib` or `g++-multilib`. You can also install both of them:
+Install missing library `gcc-multilib`. You can also install library for both gcc and g++:
 
 ```
 apt-get install gcc-multilib g++-multilib

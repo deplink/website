@@ -3,13 +3,13 @@ layout: docs/guide
 title: -lmingw32
 description: 'Troubleshooting an error: "x86_64-w64-mingw32/bin/ld.exe: skipping incompatible x86_64-w64-mingw32/lib/libmingw32.a when searching for -lmingw32 x86_64-w64-mingw32/bin/ld.exe: cannot find -lmingw32".'
 menuGroup: Troubleshooting
-order: 905
+order: 900
 ---
 
 Context
 -------
 
-Problem occurs while compiling project using gcc or g++ on **Windows using MinGW64**.
+Problem occurs while compiling project **using gcc on Windows** (MinGW64).
 
 Problem
 -------

@@ -71,13 +71,15 @@ Multiple source directories are allowed:
 compilers
 ---------
 
-Inform which compilers (as well as versions) are supported. Version must follow [version constraints](/docs/guide/constraints#version-constraints) conventions. Currently only GCC is supported.
+Inform which compilers (as well as versions) are supported. Version must follow [version constraints](/docs/guide/constraints#version-constraints) conventions.
 
 ```
 "compilers": {
     "gcc": "^5.0"
 }
 ```
+
+**Supported compilers:** g++, gcc
 
 **Note:** Field is not required, but it's highly recommended to set. When leave empty then other packages will assume that any compiler in any version is supported.
 

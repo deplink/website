@@ -3,7 +3,7 @@ layout: docs/guide
 title: undefined reference
 description: 'Troubleshooting an error: "/path/to/file.c:6: undefined reference to "methodName" collect2: error: ld returned 1 exit status".'
 menuGroup: Troubleshooting
-order: 910
+order: 900
 ---
 
 Context
@@ -24,7 +24,8 @@ Dependencies: 0 installs, 0 updates, 0 removals
 Writing lock file... OK
 Generating autoload header... OK
 Dependencies: 0 builds, 1 up-to-date
-Building project... build/x86/hello-world.o: In function `main':
+Building project...
+build/x86/hello-world.o: In function `main':
 /home/wojtek/Downloads/hello-world/src/main.c:6: undefined reference to `sayHello'
 collect2: error: ld returned 1 exit status
 build/x64/hello-world.o: In function `main':
