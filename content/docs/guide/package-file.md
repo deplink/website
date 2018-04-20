@@ -3,7 +3,7 @@ layout: docs/guide
 title: Package File
 description: The deplink.json schema is the most important file in the whole package. Each field of this file describes how the package should be builded or interact with other packages.
 menuGroup: Basic
-order: 2
+order: 5
 ---
 
 name
