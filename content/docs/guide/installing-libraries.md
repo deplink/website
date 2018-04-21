@@ -43,3 +43,9 @@ To add new package to the `dev-dependencies` section add `--dev` flag:
 ```bash
 deplink install deplink/sample --dev
 ```
+
+After installation you should include `autoload.h` file or directly any of the libraries headers (see `deplinks/autoload.h` file for more details). We recommend to include the `autoload.h` file:
+
+```cpp
+#include "autoload.h"
+```
