@@ -161,7 +161,7 @@ See [list of available repositories](/docs/guide/repositories) for more informat
 config
 ------
 
-Overwrite default compiler options:
+**Overwrite** default compiler options:
 
 ```json
 "config": {

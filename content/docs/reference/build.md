@@ -19,4 +19,5 @@ Options
 
 - `--no-dev` - skip installation packages from the "dev-dependencies" section,
 - `--no-progress` - outputs only steps without showing dynamic progress,
+- `-c NAME`, `--compiler=NAME` - force to use specified compiler regardless to the deplink.json settings,
 - `-d`, `--working-dir=WORKING-DIR` - use the given directory as a working directory.
