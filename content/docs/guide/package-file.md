@@ -3,7 +3,7 @@ layout: docs/guide
 title: Package File
 description: The deplink.json schema is the most important file in the whole package. Each field of this file describes how the package should be builded or interact with other packages.
 menuGroup: Basic
-order: 2
+order: 5
 ---
 
 name
@@ -39,6 +39,22 @@ Package version in [Semantic Versioning 2.0](https://semver.org) notation.
 "version": "2.0.7"
 ```
 
+arch
+----
+
+Specify architectures which project/library supports. It can be single architecture or array of supported architectures:
+
+```json
+"arch": "x86"
+"arch": ["x86", "x64"]
+```
+
+Supported architectures depends on the used compiler, below is a full list of supported architectures per compiler:
+
+| Compiler | Supported architectures |
+|---|---|
+| gcc | x86, x64 |
+| g++ | x86, x64 |
 
 include
 -------

@@ -33,7 +33,7 @@
 }
 
 .markdown {
-    ul, ol, p {
+    table, ul, ol, p {
         code {
             @extend .-inline;
         }

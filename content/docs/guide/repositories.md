@@ -2,8 +2,8 @@
 layout: docs/guide
 title: Repositories
 description: Repository store information about available dependencies, their versions and source code or location from which this source code can be downloaded.
-menuGroup: Basic
-order: 8
+menuGroup: Advanced
+order: 505
 ---
 
 Local repository
