@@ -4,7 +4,7 @@ title: Init Command
 description: Init command creates package file (deplink.json) with filled in required fields.
 menuTitle: init
 menuGroup: Basic
-order: 1
+order: 2
 ---
 
 Usage
