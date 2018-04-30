@@ -3,3 +3,4 @@ require('./navbar');
 require('./current-page');
 require('./quick-access');
 require('./anchor');
+require('./table');
