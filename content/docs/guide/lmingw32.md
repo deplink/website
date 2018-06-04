@@ -14,6 +14,8 @@ Problem occurs while compiling project **using gcc on Windows** (MinGW64).
 Problem
 -------
 
+Your gcc compiler doesn't support either `-m32` or `-m64` flag which instruct compiler to use the `x86` or `x86_64` architecture. MinGW supports compiling either 32 or 64 bit applications depending on the installed MinGW architecture.
+
 Example gcc output containing exception:
 
 ```

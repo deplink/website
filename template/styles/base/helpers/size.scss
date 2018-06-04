@@ -57,3 +57,7 @@
 .prl { padding-right: $lg-gap !important; }
 .pbl { padding-bottom: $lg-gap !important; }
 .pll { padding-left: $lg-gap !important; }
+
+// Overflow
+.overflow.-x { overflow-x: auto; }
+.overflow.-y { overflow-y: auto; }
