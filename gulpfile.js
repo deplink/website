@@ -1,5 +1,6 @@
 var del = require('del');
 var gulp = require('gulp');
+var mt = require('mark-twain');
 var sass = require('gulp-sass');
 var gutil = require('gulp-util');
 var uglify = require('gulp-uglify');
@@ -68,15 +69,22 @@ gulp.task('public', function () {
 gulp.task('indexes', function () {
     var transform = function (data, file) {
         // Skip indexing pages with
-        // "exclude" frontmatter key
+        // "exclude" frontmatter key.
         if('exclude' in data) {
             return {};
         }
 
+        // Extract headers from content.
+        data.headers = [];
+        var content = mt(data.body.content).content || [];
+        content.forEach(function(el) {
+            if(['h1', 'h2'].indexOf(el[0]) >= 0) {
+                data.headers.push(el[1]);
+            }
+        });
+
         // Remove keys which can contain markdown content
-        // (search only through the metadata to improve performance)
-        delete data.data;
-        delete data.content;
+        // (search only through the metadata to improve performance).
         delete data.body;
 
         // Flatten json structure by modifying file path.

@@ -15,13 +15,16 @@ module.exports = function () {
             weight: 0.55
         }, {
             name: 'title',
-            weight: 0.30
+            weight: 0.20
         }, {
             name: 'description',
             weight: 0.05
         }, {
             name: 'url',
             weight: 0.10
+        }, {
+            name: 'headers',
+            weight: 0.10,
         }]
     };
 
@@ -119,6 +122,7 @@ module.exports = function () {
                 external: data.external || false
             };
 
+            console.log(matches);
             $.each(matches, function (i, match) {
                 if (html[match.key] !== undefined) {
                     html[match.key] = boldMatches(html[match.key], match.indices);

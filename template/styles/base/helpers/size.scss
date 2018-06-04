@@ -1,6 +1,6 @@
 @each $prefix in (xs sm md lg) {
     @include gte($prefix) {
-        @for $i from 1 through $flex-columns {
+        @for $i from 0 through $flex-columns {
             // xs-12, sm-4, lg-8, ...
             .#{$prefix}-#{$i} {
                 width: ($i / $flex-columns) * 100%;

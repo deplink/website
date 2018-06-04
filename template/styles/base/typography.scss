@@ -43,8 +43,16 @@ h2, .font-header {
     line-height: 1.6em;
 }
 
+.text-left {
+    text-align: left;
+}
+
 .text-center {
     text-align: center;
+}
+
+.text-right {
+    text-align: right;
 }
 
 // The :before is reserved
