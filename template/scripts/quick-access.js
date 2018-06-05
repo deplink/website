@@ -18,13 +18,10 @@ module.exports = function () {
             weight: 0.20
         }, {
             name: 'description',
-            weight: 0.05
-        }, {
-            name: 'url',
             weight: 0.10
         }, {
-            name: 'headers',
-            weight: 0.10,
+            name: 'url',
+            weight: 0.15
         }]
     };
 
