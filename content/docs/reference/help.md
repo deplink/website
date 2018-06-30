@@ -4,7 +4,6 @@ title: Help Command
 description: Displays help for a given command.
 menuTitle: help
 menuGroup: Basic
-order: 1
 ---
 
 Usage

@@ -4,7 +4,6 @@ title: Run Command
 description: Run project executable file with optional arguments.
 menuTitle: run
 menuGroup: Basic
-order: 15
 ---
 
 Usage

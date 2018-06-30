@@ -4,7 +4,6 @@ title: Build Command
 description: Build project and related project dependencies. Command execution is prepended with installation of missing dependencies.
 menuTitle: build
 menuGroup: Basic
-order: 10
 ---
 
 Usage
