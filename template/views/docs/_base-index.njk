@@ -1,0 +1,28 @@
+{% extends "_layout.njk" %}
+{% set background = 'bg-white' %}
+
+{% block content %}
+    <div>
+        <section class="section bg-white">
+            <div class="container pbs">
+                <div class="markdown">
+                    <h1>{{ page.title }}</h1>
+                    <p>{{ page.description }}</p>
+
+                    {% block markdown %}{% endblock %}
+
+                    {% for group, articles in groupBy('menuGroup', docsPages) %}
+                        <section>
+                            <h2>{{ group }}</h2>
+                            {% for article in articles %}
+                                <article class="mts">
+                                    {{ printItemList(article) }}
+                                </article>
+                            {% endfor %}
+                        </section>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

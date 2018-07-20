@@ -55,6 +55,10 @@ h2, .font-header {
     text-align: right;
 }
 
+.text-gray {
+  color: lighten(black, 50%);
+}
+
 // The :before is reserved
 // for anchor links support.
 [id] {

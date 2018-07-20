@@ -1,0 +1,9 @@
+{% extends "docs/_base-index.njk" %}
+{% set docsPages = referencePages %}
+
+{% macro printItemList(article) %}
+    <b><a href="{{ url(article.url) }}">{{ article.menuTitle|default(article.title) }}</a></b>
+    {% if article.description %}
+        - <span class="font-tiny text-gray">{{ article.description }}</span>
+    {% endif %}
+{% endmacro %}
