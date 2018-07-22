@@ -1,6 +1,9 @@
 <?php
 
-$uri = $_SERVER['REQUEST_URI'] !== '/' ? $_SERVER['REQUEST_URI'] : '/index';
+$uri = substr($_SERVER['REQUEST_URI'], -1) === '/'
+    ? $_SERVER['REQUEST_URI'] .'/index'
+    : $_SERVER['REQUEST_URI'];
+
 $page = __DIR__ . $uri . '.html';
 
 $exceptUri = [
@@ -25,6 +28,7 @@ if (php_sapi_name() === 'cli-server') {
 // 2. Redirect http to https (http://www.example.com -> https://www.example.com)
 // 3. Redirect www to non www (https://www.example.com -> https://example.com)
 // 4. Remove trailing .html (https://example.com/download.html -> https://example.com/download)
+// 4. Remove trailing index (https://example.com/index -> https://example.com/)
 // 5. Redirect all request except existing files (eq. images) to the index.php
 if (file_exists($page) && !in_array($uri, $exceptUri)) {
     include $page;
