@@ -14,10 +14,19 @@ branches:
 addons:
   ssh_known_hosts: deplink.org
 
-install:
-  - npm install
+stages:
+  - deploy
+  - validate
 
-script:
-  - npm run prod
-  - chmod +x deploy.sh
-  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./deploy.sh; fi
+jobs:
+  include:
+    - stage: deploy
+      script:
+        - npm install
+        - npm run prod
+        - chmod +x deploy.sh
+        - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./deploy.sh; fi
+    - stage: validate
+      script:
+        - chmod +x tests/crawler.sh
+        - tests/crawler.sh https://deplink.org
