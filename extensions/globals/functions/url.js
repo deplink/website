@@ -26,7 +26,7 @@ module.exports = function (env) {
             return url;
         }
 
-        return normalizeUrl(data.host +'/'+ url);
+        return normalizeUrl(data.host +'/'+ url, {removeTrailingSlash: false});
     };
 
     env.addGlobal('url', fn);

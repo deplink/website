@@ -96,8 +96,8 @@ gulp.task('indexes', function () {
         // (unify directory separator and remove .md extension).
         data.uri = relativePath.replace(/[\\/]/g, '/').slice(0, -3);
         data.url = data.uri === 'index'
-            ? normalizeUrl(config.host)
-            : normalizeUrl(config.host +'/'+ data.uri);
+            ? normalizeUrl(config.host, {removeTrailingSlash: false})
+            : normalizeUrl(config.host +'/'+ data.uri, {removeTrailingSlash: false});
 
         return data;
     };
