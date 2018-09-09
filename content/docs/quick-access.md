@@ -20,7 +20,6 @@ Shortcuts
 Results could change over time when new pages comes to the documentation and some titles or descriptions change. Shortcuts was created to provide more convenience on navigating on the site. The predefined shortcuts ensure that you'll go to the same page each time you type it. Try the following ones:
 
 - `github` - project on GitHub,
-- `blog` - go to blog on medium,
 - `repo` - opens **Official Online Repository**,
 - `download` - go to the Download page,
 - `help` - link to the page you're currently reading.
