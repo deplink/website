@@ -13,7 +13,7 @@ Usage
 deplink install [options] [<package>]...
 ```
 
-Below table demonstrates whether specified packages will be added to the `dependencies` or `dev-dependencies` (the *"Section"* column) and whether installation will include `dev-dependencies` (the "*Install dev"* column).
+Below table demonstrates whether specified packages will be added to the `dependencies` or `dev-dependencies` section in the `deplink.json` file (the *"Section"* column) and whether installation will also download and build dependencies listed in the `dev-dependencies` section (the "*Install dev"* column).
 
 | Command | Section | Install dev |
 |---|---|---|
@@ -27,12 +27,24 @@ Below table demonstrates whether specified packages will be added to the `depend
 Additionally while specifying the `package` argument you can include custom version constraint and linking type constraint. If version is omitted then Deplink will force project to use version compatible to the newly installed one. Omitting the linking type will result in using a linking type preferred by the library.
 
 **Package argument format:**
-- `<package-name>[:[<version>][:<linking-type>]]`.
+
+```
+<package-name>[:[<version>][:<linking-type>]]
+```
 
 **Example commands:**
-- `deplink install hello/world:^1.3`, 
-- `deplink install hello/world::static`,
-- `deplink install hello/world:2.*:dynamic`.
+
+```
+deplink install hello/world:^1.3
+``` 
+
+```
+deplink install hello/world::static
+```
+
+```
+deplink install hello/world:2.*:dynamic
+```
 
 Arguments
 ---------

@@ -8,7 +8,7 @@ shortcut: help
 Quick Access Manual
 ===================
 
-Quick Access is a **search engine to easy navigate between pages** on Deplink website. Be careful, it's very addictive feature and you'll miss it on the other sites.
+Quick Access is a **search engine to easy navigate between pages** on Deplink website.
 
 **How it works?** Each page on the site has it own title, description, content, url, ... Almost all of the page elements are used when you search using Quick Access tool. To search via the Quick Access press <kbd class="key">F2</kbd> (on mobile devices click <span class="icon-search"></span> in a top right corner) and type what you're looking for.
 
